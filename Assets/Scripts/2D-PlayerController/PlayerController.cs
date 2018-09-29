@@ -36,20 +36,18 @@ public class PlayerController : MonoBehaviour
     {
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         pCharge = GetComponent<playerCharge>();
     }
 
     void Update()
     {
-        Debug.Log(isGrounded);
         if ( !isGrounded ) {
-            Debug.Log(ACCELERATIONX);
             ACCELERATIONX = 20f;
         } else if ( isGrounded ){
             ACCELERATIONX = 50f;
         }
-        int layerMask = 1 << 8;
+        int layerMask = 1 << 2;
         layerMask = ~layerMask;
         CheckGrounded( layerMask );
         CheckWalled( layerMask );
@@ -57,15 +55,14 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded( int layerMask )
     {
-        //Debug.Log(isGrounded);
-        int layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
-        layerMask = ~layerMask;
+        //int layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        //layerMask = ~layerMask;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * rayCastDownDist, Color.red);
-        Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (-0.33f,-1,0)) * rayCastDownDist, Color.red);
-        Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (0.33f,-1,0)) * rayCastDownDist, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (-0.15f,-1,0)) * rayCastDownDist, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (0.15f,-1,0)) * rayCastDownDist, Color.red);
         Collider2D downCast = Physics2D.Raycast(transform.position, transform.TransformDirection(Vector3.down), rayCastDownDist, layerMask).collider;
-        Collider2D downleftCast = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector3 (-0.33f,-1,0)), rayCastDownDist, layerMask).collider;
-        Collider2D downrightCast = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector3 (0.33f,-1,0)), rayCastDownDist, layerMask).collider; 
+        Collider2D downleftCast = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector3 (-0.15f,-1,0)), rayCastDownDist, layerMask).collider;
+        Collider2D downrightCast = Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector3 (0.15f,-1,0)), rayCastDownDist, layerMask).collider; 
         if (downCast == null && downleftCast == null && downrightCast == null)
         {
             isGrounded = false;
@@ -189,11 +186,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Shoot(){
-        if (pCharge.charge < 5) return;
+        if (pCharge.charge < 5) return;     
         int p = (int) pCharge.charge / 20;
 
         ProjectileController projectile = Instantiate (
-            projectiles[p],
+            projectiles[0],
             transform.position + new Vector3(0,0,-3),
             transform.rotation
         );

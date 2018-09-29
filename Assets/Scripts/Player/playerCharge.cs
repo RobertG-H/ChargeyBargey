@@ -12,6 +12,7 @@ public class playerCharge : MonoBehaviour {
 
 	public float charge;
 	public bool onGround;
+    public bool charging;
 
     // Use this for initialization
 	void Start () {
