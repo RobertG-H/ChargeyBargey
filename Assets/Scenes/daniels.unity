@@ -374,7 +374,6 @@ GameObject:
   - component: {fileID: 403800872}
   - component: {fileID: 403800871}
   - component: {fileID: 403800880}
-  - component: {fileID: 403800881}
   m_Layer: 8
   m_Name: ProtoPlayer
   m_TagString: Player
@@ -552,19 +551,6 @@ Transform:
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &403800880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 403800870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f698730fedf2a46578fcb8b8e66f96f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  charge: 0
-  charging: 0
---- !u!114 &403800881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,7 +1075,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 669505025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff2d80cfe1d74d77a4787f898b8d01e, type: 3}
+  m_Script: {fileID: 11500000, guid: db18f7198ef91eb498b43246f73d6ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotateVect: {x: 0, y: 0, z: 0}
@@ -2016,7 +2002,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1726421623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ff2d80cfe1d74d77a4787f898b8d01e, type: 3}
+  m_Script: {fileID: 11500000, guid: db18f7198ef91eb498b43246f73d6ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotateVect: {x: 0, y: 0, z: 0}
