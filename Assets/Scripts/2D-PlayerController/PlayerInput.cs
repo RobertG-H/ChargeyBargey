@@ -35,11 +35,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            controller.Jump();
-        }
-        else if (Input.GetButton("Jump"))
-        {
-            controller.ContinueJump();
+            controller.JumpPressed();
         }
 
         // Uncomment for slash

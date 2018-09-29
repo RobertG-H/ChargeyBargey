@@ -23,7 +23,6 @@ public class playerCharge : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Charging Platform")
         {
-			Debug.Log("Platform Detected");
 			charging = true;
         }
     }
@@ -31,7 +30,6 @@ public class playerCharge : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Charging Platform")
         {
-			Debug.Log("Platform Detected");
 			charging = false;
         }
     }
