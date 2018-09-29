@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +38,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetButtonDown("Jump" + playerNum.ToString()))
         {
+            controller.JumpPressed();
             controller.Jump();
         }
         else if (Input.GetButton("Jump" + playerNum.ToString()))

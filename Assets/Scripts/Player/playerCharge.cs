@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +37,7 @@ public class playerCharge : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Charging Platform")
         {
+			charging = true;
 			onGround = true;
         }
     }
@@ -44,6 +45,7 @@ public class playerCharge : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Charging Platform")
         {
+			charging = false;
 			onGround = false;
         }
     }
