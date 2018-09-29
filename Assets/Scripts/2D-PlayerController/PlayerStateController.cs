@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour {
+    public delegate void DeathEvent(int playerNum);
+    public event DeathEvent OnPlayerDeath;
 
-    public enum state {IDLE, WALKING, JUMPING, FALLING};
+    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD};
     public int currentState;
     [SerializeField]
     private int playerNum;
@@ -36,6 +38,11 @@ public class PlayerStateController : MonoBehaviour {
         {
             SetStateFalling();
         }
+        // Need to define this later
+        //else if (CheckDeath())
+        //{
+        //    SetStateDead();
+        //}
 
     }
 
@@ -86,4 +93,12 @@ public class PlayerStateController : MonoBehaviour {
     {
         currentState = (int)state.FALLING;
     }
+
+    public void SetStateDead()
+    {
+        currentState = (int)state.DEAD;
+        OnPlayerDeath(playerNum);
+    }
+
+
 }
