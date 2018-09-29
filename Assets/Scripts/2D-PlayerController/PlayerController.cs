@@ -11,6 +11,15 @@ public class PlayerController : MonoBehaviour
     private GameObject slashHitBox;
     private PlayerAnimations animations;
     public ProjectileController[] projectiles;
+    // [speed, duration]
+    private float[,] projectileProps = new float[,] {
+        {20, 0.5f},
+        {20, 3},
+        {10, 1},
+        {20, 3},
+        {30, 3},
+        {20, 3},
+    };
     private playerCharge pCharge;
 
     #region Conditions
@@ -188,15 +197,38 @@ public class PlayerController : MonoBehaviour
     public void Shoot(){
         if (pCharge.charge < 5) return;     
         int p = (int) pCharge.charge / 20;
+        float xdirection = getForward().x;
 
         ProjectileController projectile = Instantiate (
-            projectiles[0],
-            transform.position + new Vector3(0,0,-3),
+            projectiles[p],
+            transform.position + new Vector3(xdirection,0,-3),
             transform.rotation
         );
-        projectile.Shoot(getForward());
+        projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+        projectile.Shoot(getForward(), projectileProps[p, 0]);
+        Destroy(projectile.gameObject, projectileProps[p, 1]);
+
+        if (p == 2) {
+            ProjectileController projectileUpper = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, 20 * xdirection)
+            );
+            projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p,0]);
+            projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
+
+            ProjectileController projectileLower = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, -20 * xdirection)
+            );
+            projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
+            projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+        }
+
         pCharge.charge = 0;
-        Destroy(projectile.gameObject, 3);
     }
 
     public void FlipSlashHitBox()
