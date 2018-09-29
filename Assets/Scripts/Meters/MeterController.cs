@@ -14,7 +14,6 @@ public class MeterController : MonoBehaviour {
 		length = MAXLENGTH;
 		rectTransform = GetComponent< RectTransform >();
 		leftPos = (int) rectTransform.localPosition.x - MAXLENGTH/2;
-
 	}
 	
 	// Update is called once per frame
