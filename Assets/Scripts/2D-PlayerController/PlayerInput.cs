@@ -6,8 +6,6 @@ public class PlayerInput : MonoBehaviour
 {
 
     private PlayerController controller;
-    [SerializeField]
-    private int playerNum;
     // Use this for initialization
     void Start()
     {

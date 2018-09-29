@@ -6,9 +6,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
+    private SpriteRenderer spriteRenderer;
     [SerializeField]
     private GameObject slashHitBox;
     private PlayerAnimations animations;
+    public ProjectileController projectile1Prefab;
 
     #region Conditions
     private bool isGrounded;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
         }
+    }
+
+    private Vector2 getForward() {
+        return (spriteRenderer.flipX ? -1 : 1) * new Vector2(1,0);
     }
 
     public void Move(float speed)
@@ -123,6 +130,16 @@ public class PlayerController : MonoBehaviour
     public float GetSpeedX()
     {
         return rigidBody.velocity.x;
+    }
+
+    public void Shoot(){
+        ProjectileController projectile = Instantiate (
+            projectile1Prefab,
+            transform.position,
+            transform.rotation
+        );
+        projectile.Shoot(getForward());
+        Destroy(projectile.gameObject, 4);
     }
 
     
