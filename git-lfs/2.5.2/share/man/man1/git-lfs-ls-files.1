@@ -1,0 +1,49 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "GIT\-LFS\-LS\-FILES" "1" "September 2018" "" ""
+.
+.SH "NAME"
+\fBgit\-lfs\-ls\-files\fR \- Show information about Git LFS files in the index and working tree
+.
+.SH "SYNOPSIS"
+\fBgit lfs ls\-files\fR [\fIref\fR]
+.
+.SH "DESCRIPTION"
+Display paths of Git LFS files that are found in the tree at the given reference\. If no reference is given, scan the currently checked\-out branch\. An asterisk (*) after the OID indicates a LFS pointer, a minus (\-) a full object\.
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-l\fR \fB\-\-long\fR
+Show the entire 64 character OID, instead of just first 10\.
+.
+.TP
+\fB\-s\fR \fB\-\-size\fR
+Show the size of the LFS object between parenthesis at the end of a line\.
+.
+.TP
+\-d \-\-debug
+Show as much information as possible about a LFS file\. This is intended for manual inspection; the exact format may change at any time\.
+.
+.TP
+\-a \-\-all
+Inspects the full history of the repository, not the current HEAD (or other provided reference)\.
+.
+.TP
+\fB\-\-deleted\fR
+Shows the full history of the given reference, including objects that have been deleted\.
+.
+.TP
+\fB\-I\fR \fIpaths\fR \fB\-\-include=\fR\fIpaths\fR
+Include paths matching only these patterns; see [FETCH SETTINGS]\.
+.
+.TP
+\fB\-X\fR \fIpaths\fR \fB\-\-exclude=\fR\fIpaths\fR
+Exclude paths matching any of these patterns; see [FETCH SETTINGS]\.
+.
+.SH "SEE ALSO"
+git\-lfs\-status(1), git\-lfs\-config(5)\.
+.
+.P
+Part of the git\-lfs(1) suite\.
