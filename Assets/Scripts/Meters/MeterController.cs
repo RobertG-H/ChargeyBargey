@@ -13,7 +13,8 @@ public class MeterController : MonoBehaviour {
 	void Start () {
 		length = MAXLENGTH;
 		rectTransform = GetComponent< RectTransform >();
-		leftPos = (int) rectTransform.localPosition.x - (int)(0.5 * length);
+		leftPos = (int) rectTransform.localPosition.x - MAXLENGTH/2;
+
 	}
 	
 	// Update is called once per frame
@@ -25,6 +26,6 @@ public class MeterController : MonoBehaviour {
 	public void SetLength (float percent) {
 		length = Mathf.Min(1.0f, (percent / 100.0f)) * (float) MAXLENGTH;
 		rectTransform.localScale = new Vector2(length, rectTransform.localScale.y);
-		rectTransform.localPosition = new Vector2(leftPos + length/2,rectTransform.localPosition.y);
+		rectTransform.localPosition = new Vector2(leftPos + length/2, rectTransform.localPosition.y);
 	}
 }

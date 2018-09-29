@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGrounded()
     {
-        Debug.Log(isGrounded);
         int layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
         layerMask = ~layerMask;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * rayCastDownDist, Color.red);

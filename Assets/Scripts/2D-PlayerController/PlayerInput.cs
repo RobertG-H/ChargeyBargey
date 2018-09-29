@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             controller.Move(-1.0f);
+           
         }
         else if (Input.GetAxisRaw("Horizontal") > 0)
         {
