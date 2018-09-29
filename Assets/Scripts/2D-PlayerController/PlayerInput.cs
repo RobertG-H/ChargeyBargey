@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour
 {
 
     private PlayerController controller;
+    [SerializeField]
+    private int playerNum;
     // Use this for initialization
     void Start()
     {
@@ -15,39 +17,39 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") < 0)
+        if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) < 0)
         {
             controller.Move(-1.0f);
            
         }
-        else if (Input.GetAxisRaw("Horizontal") > 0)
+        else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) > 0)
         {
             controller.Move(1.0f);
         }
-        else if (Input.GetAxisRaw("Horizontal") == 0)
+        else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0)
         {
             controller.Stop();
         }
 
-        if (Input.GetAxisRaw("Vertical") < 0)
+        if (Input.GetAxisRaw("Vertical" + playerNum.ToString()) < 0)
         {
             controller.FastFall();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump" + playerNum.ToString()))
         {
             controller.Jump();
         }
-        else if (Input.GetButton("Jump"))
+        else if (Input.GetButton("Jump" + playerNum.ToString()))
         {
             controller.ContinueJump();
         }
 
-        // Uncomment for slash
-        /*if (Input.GetButtonDown("Slash"))
-        {
-            controller.SlashStart();
-        }*/
+            // Uncomment for slash
+            /*if (Input.GetButtonDown("Slash"))
+            {
+                controller.SlashStart();
+            }*/
 
     }
 }
