@@ -45,6 +45,10 @@ public class PlayerInput : MonoBehaviour
             controller.ContinueJump();
         }
 
+        if  (Input.GetButtonDown("Fire" +  playerNum.ToString()))
+        {
+            controller.Shoot();
+        }
             // Uncomment for slash
             /*if (Input.GetButtonDown("Slash"))
             {
