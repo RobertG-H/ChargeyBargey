@@ -224,6 +224,71 @@ Prefab:
       propertyPath: m_Name
       value: MainMenuUI
       objectReference: {fileID: 0}
+    - target: {fileID: 114037740169703628, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_Text
+      value: The Electric Share!
+      objectReference: {fileID: 0}
+    - target: {fileID: 224265116937949916, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224265116937949916, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224265116937949916, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224265116937949916, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224773868064092160, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224773868064092160, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224773868064092160, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224773868064092160, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583470574758002, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583470574758002, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583470574758002, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224583470574758002, guid: 9de7b29d629d8254398ed7a6b10d5f1f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9de7b29d629d8254398ed7a6b10d5f1f, type: 2}
   m_IsPrefabAsset: 0
@@ -404,6 +469,16 @@ Prefab:
     - target: {fileID: 4681497140092346, guid: dc2136cd4a3b8c64bbe9ddec13795a38, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82205488962176390, guid: dc2136cd4a3b8c64bbe9ddec13795a38,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a4305af067085194f9eb734c5bb58263, type: 3}
+    - target: {fileID: 114693960469876830, guid: dc2136cd4a3b8c64bbe9ddec13795a38,
+        type: 2}
+      propertyPath: sceneToLoad
+      value: Level1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc2136cd4a3b8c64bbe9ddec13795a38, type: 2}

@@ -39,12 +39,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetButtonDown("Jump" + playerNum.ToString()))
         {
             controller.JumpPressed();
-            controller.Jump();
         }
-        else if (Input.GetButton("Jump" + playerNum.ToString()))
+        /*else if (Input.GetButton("Jump" + playerNum.ToString()))
         {
             controller.ContinueJump();
-        }
+        }*/
 
         if  (Input.GetButtonDown("Fire" +  playerNum.ToString()))
         {
