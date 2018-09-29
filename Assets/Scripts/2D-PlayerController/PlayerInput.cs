@@ -6,6 +6,8 @@ public class PlayerInput : MonoBehaviour
 {
 
     private PlayerController controller;
+    [SerializeField]
+    private int playerNum;
     // Use this for initialization
     void Start()
     {
@@ -43,6 +45,10 @@ public class PlayerInput : MonoBehaviour
             controller.ContinueJump();
         }
 
+        if  (Input.GetButtonDown("Fire" +  playerNum.ToString()))
+        {
+            controller.Shoot();
+        }
             // Uncomment for slash
             /*if (Input.GetButtonDown("Slash"))
             {

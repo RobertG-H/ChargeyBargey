@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject slashHitBox;
     private PlayerAnimations animations;
-    public ProjectileController projectile1Prefab;
+    public ProjectileController[] projectiles;
+    private playerCharge pCharge;
 
     #region Conditions
     private bool isGrounded;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        pCharge = GetComponent<playerCharge>();
     }
 
     void Update()
@@ -133,13 +135,17 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Shoot(){
+        if (pCharge.charge < 5) return;
+        int p = (int) pCharge.charge / 20;
+
         ProjectileController projectile = Instantiate (
-            projectile1Prefab,
-            transform.position,
+            projectiles[p],
+            transform.position + new Vector3(0,0,-3),
             transform.rotation
         );
         projectile.Shoot(getForward());
-        Destroy(projectile.gameObject, 4);
+        pCharge.charge = 0;
+        Destroy(projectile.gameObject, 3);
     }
 
     

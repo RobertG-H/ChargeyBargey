@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	private int SPEED = 10;
+	private int SPEED = 20;
 	private Rigidbody2D rigidbody;
 
 	// Use this for initialization
