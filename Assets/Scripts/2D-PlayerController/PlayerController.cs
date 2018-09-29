@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
     public void SlashStart()
     {
         slashHitBox.SetActive(true);
-        animations.SlashAnim();
+        //animations.SlashAnim();
     }
     public void SlashEnd()
     {
