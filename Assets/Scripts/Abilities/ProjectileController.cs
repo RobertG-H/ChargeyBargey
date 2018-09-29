@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	private int SPEED = 20;
+	//private int SPEED = 20;
 	private Rigidbody2D rigidbody;
 
 	// Use this for initialization
@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour {
 	void Update () {
 	}
 
-	public void Shoot (Vector2 direction) {
-		GetComponent<Rigidbody2D>().velocity = SPEED * direction.normalized;
+	public void Shoot (Vector2 direction, float speed) {
+		GetComponent<Rigidbody2D>().velocity = speed * direction.normalized;
 	}
 }
