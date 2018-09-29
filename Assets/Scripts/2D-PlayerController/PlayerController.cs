@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
+    private SpriteRenderer spriteRenderer;
     [SerializeField]
     private GameObject slashHitBox;
     private PlayerAnimations animations;
+    public ProjectileController[] projectiles;
+    private playerCharge pCharge;
 
     #region Conditions
     private bool isGrounded;
@@ -33,6 +36,8 @@ public class PlayerController : MonoBehaviour
     {
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        pCharge = GetComponent<playerCharge>();
     }
 
     void Update()
@@ -53,6 +58,8 @@ public class PlayerController : MonoBehaviour
     private void CheckGrounded( int layerMask )
     {
         //Debug.Log(isGrounded);
+        int layerMask = 1 << LayerMask.NameToLayer("Ignore Raycast");
+        layerMask = ~layerMask;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * rayCastDownDist, Color.red);
         Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (-0.33f,-1,0)) * rayCastDownDist, Color.red);
         Debug.DrawRay(transform.position, transform.TransformDirection(new Vector3 (0.33f,-1,0)) * rayCastDownDist, Color.red);
@@ -90,6 +97,10 @@ public class PlayerController : MonoBehaviour
             touchingLeftWall = false;
             touchingRightWall = false;
         }
+    }
+
+    private Vector2 getForward() {
+        return (spriteRenderer.flipX ? -1 : 1) * new Vector2(1,0);
     }
 
     public void Move(float speed)
@@ -176,6 +187,21 @@ public class PlayerController : MonoBehaviour
     {
         return rigidBody.velocity.x;
     }
+
+    public void Shoot(){
+        if (pCharge.charge < 5) return;
+        int p = (int) pCharge.charge / 20;
+
+        ProjectileController projectile = Instantiate (
+            projectiles[p],
+            transform.position + new Vector3(0,0,-3),
+            transform.rotation
+        );
+        projectile.Shoot(getForward());
+        pCharge.charge = 0;
+        Destroy(projectile.gameObject, 3);
+    }
+
     public void FlipSlashHitBox()
     {
         // Uncomment for slash hitbox

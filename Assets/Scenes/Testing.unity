@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 281122751}
   - component: {fileID: 281122750}
   - component: {fileID: 281122754}
+  - component: {fileID: 281122755}
   m_Layer: 8
   m_Name: ProtoPlayer
   m_TagString: Player
@@ -275,6 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slashHitBox: {fileID: 0}
+  projectile1Prefab: {fileID: 114936095517231488, guid: ca8248188d42d494ab4a31a6bf5cafd6,
+    type: 2}
   rayCastDownDist: 1
 --- !u!114 &281122753
 MonoBehaviour:
@@ -305,6 +308,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &281122755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 281122745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f698730fedf2a46578fcb8b8e66f96f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 0}
+  meter: {fileID: 1818545638}
+  charge: 0
+  onGround: 0
 --- !u!1 &510845591
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +335,7 @@ GameObject:
   - component: {fileID: 510845594}
   m_Layer: 0
   m_Name: ProtoGround
-  m_TagString: Untagged
+  m_TagString: Charging Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -629,6 +647,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1600162424382134, guid: 7c235abbd5f61aa4b90738cb580729f0,
     type: 2}
   m_PrefabInternal: {fileID: 1652378814}
+--- !u!1001 &1634841514
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101712798962538, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225283191805272, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+      propertyPath: m_Name
+      value: New Sprite
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!114 &1637787262 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114153447872658936, guid: b4bc0e90a529de94ebce1944a9089960,

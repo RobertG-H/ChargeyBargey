@@ -7,6 +7,8 @@ public class PlayerStateController : MonoBehaviour {
 
     public enum state {IDLE, WALKING, JUMPING, FALLING};
     public int currentState;
+    [SerializeField]
+    private int playerNum;
 
     private Rigidbody2D rigidBody;
     private PlayerController controller;
@@ -39,14 +41,14 @@ public class PlayerStateController : MonoBehaviour {
 
     private bool CheckIdle()
     {
-        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0 && Input.GetAxisRaw("Vertical" + playerNum.ToString()) == 0)
             return true;
         return false;
     }
 
     private bool CheckWalking()
     {
-        if (controller.IsGrounded() && Math.Abs(Input.GetAxisRaw("Horizontal")) > 0)
+        if (controller.IsGrounded() && Math.Abs(Input.GetAxisRaw("Horizontal" + playerNum.ToString())) > 0)
             return true;
         return false;
     }
