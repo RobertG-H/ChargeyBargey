@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (shooting)
-            shooting = false;
+        //if (shooting)
+        //    shooting = false;
         if (!isGrounded)
         {
             ACCELERATIONX = 100f;
@@ -230,6 +230,14 @@ public class PlayerController : MonoBehaviour
         //isJumping = true;
         touchingLeftWall = false;
         touchingRightWall = false;
+        if(charge + 5 > 100)
+        {
+            charge = 100;
+        }
+        else
+        {
+            charge += 5;
+        }
         Jump();
         if (dir == "right")
         {
@@ -320,17 +328,19 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Shoot(){
-        if (charge < 5) return;
+        if(!shooting)
+        {
+            if (charge < 5) return;
 
-        shooting = true;
+            shooting = true;
 
 
-        float currentCharge = charge;
-        shooting = true;
-        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionY;
-        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionX;
-        StartCoroutine(WaitFrames(currentCharge));
-
+            float currentCharge = charge;
+            shooting = true;
+            rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionY;
+            rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionX;
+            StartCoroutine(WaitFrames(currentCharge));
+        }
     }
 
     IEnumerator WaitFrames(float currentCharge)
@@ -447,6 +457,7 @@ public class PlayerController : MonoBehaviour
         }
         rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
         rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
+        shooting = false;
     }
 
     //public void FlipSlashHitBox()
