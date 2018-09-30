@@ -31,24 +31,6 @@ public class WinCondition : MonoBehaviour
         //}
     }
 
-    // Update is called once per frame	
-    void Update() {
-        // If there is 1 alive, player wins	
-        if (deathCounter == players.Length - 1) {
-            int winner = 0;
-            for (int i = 0; i < players.Length; i++) {
-                if (whosAlive[i])
-                    winner = i;
-            }
-            //scores[winner]++;
-            int playerNumber = winner + 1;
-            roundState = "Player " + playerNumber.ToString() + "Wins This Round!"; //TO DO: change this to character name?	
-        }
-        // Ties if no players are alive	
-        else if (deathCounter == players.Length) {
-            roundState = "Tie!";
-        }
-    }
     void DeathHandler(int playerNum) {
         whosAlive[playerNum-1] = false;
         deathCounter++;
