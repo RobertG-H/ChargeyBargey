@@ -150,7 +150,6 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
     }
 
-    
     public void JumpPressed()
     {
         if( !isGrounded && touchingLeftWall )
