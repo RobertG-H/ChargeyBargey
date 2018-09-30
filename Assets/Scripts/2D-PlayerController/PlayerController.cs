@@ -14,6 +14,16 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimations animations;
     public ProjectileController[] projectiles;
 
+    public MeterController meter;
+    public ProjectileController projectile;
+
+    #region Charging
+    private float CHARGERATE = 100f;//20f;
+    private float DISCHARGERATE = 14f;
+    private float charge;
+    #endregion
+
+
     public AudioClip turnClip;
     public AudioClip jumpClip;
     public AudioClip deathClip;
@@ -35,13 +45,12 @@ public class PlayerController : MonoBehaviour
         {30, 3},
         {20, 3},
     };
-    private playerCharge pCharge;
-
     #region Conditions
     private bool isGrounded;
     private bool isJumping;
     private bool touchingLeftWall;
     private bool touchingRightWall;
+    private bool charging;
     #endregion
 
     private Vector3 fullHopPoint;
@@ -63,8 +72,8 @@ public class PlayerController : MonoBehaviour
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        pCharge = GetComponent<playerCharge>();
         audioSource = GetComponent<AudioSource>();
+        charge = 0.0f;
     }
 
     void Update()
@@ -78,6 +87,9 @@ public class PlayerController : MonoBehaviour
         layerMask = ~layerMask;
         CheckGrounded( layerMask );
         CheckWalled( layerMask );
+        UpdateCharge();
+
+
     }
 
     private void CheckGrounded( int layerMask )
@@ -125,6 +137,28 @@ public class PlayerController : MonoBehaviour
             touchingRightWall = false;
             return false;
         }
+    }
+
+    public void UpdateCharge()
+    {
+        if (IsCharging())
+        {
+            float addCharge = CHARGERATE * Time.deltaTime;
+            if (charge <= 100 && charge + addCharge > 100)
+            {
+                charge = 100;
+            }
+            else
+            {
+                charge += addCharge;
+            }
+        }
+        else
+        {
+            //charge -=  DISCHARGERATE * Time.deltaTime;
+            if (charge < 0) charge = 0;
+        }
+        meter.SetLength(charge);
     }
 
     private Vector2 getForward() {
@@ -186,14 +220,15 @@ public class PlayerController : MonoBehaviour
     }
     public void wallJump( string dir )
     {
-        isJumping = true;
+        //isJumping = true;
         touchingLeftWall = false;
         touchingRightWall = false;
-        if ( dir == "right" ) {
-            rigidBody.AddForce(new Vector2(-600.0f, 650.0f));
-        } else if ( dir == "left" ) {
-            rigidBody.AddForce(new Vector2(600.0f, 650.0f));
-        }
+        Jump();
+        //if ( dir == "right" ) {
+        //    rigidBody.AddForce(new Vector2(-600.0f, 650.0f));
+        //} else if ( dir == "left" ) {
+        //    rigidBody.AddForce(new Vector2(600.0f, 650.0f));
+        //}
     }
     public void FastFall()
     {
@@ -202,15 +237,15 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(new Vector2(0, fastFallForce));
         }
     }
-    public void SlashStart()
-    {
-        slashHitBox.SetActive(true);
-        //animations.SlashAnim();
-    }
-    public void SlashEnd()
-    {
-        slashHitBox.SetActive(false);
-    }
+    //public void SlashStart()
+    //{
+    //    slashHitBox.SetActive(true);
+    //    //animations.SlashAnim();
+    //}
+    //public void SlashEnd()
+    //{
+    //    slashHitBox.SetActive(false);
+    //}
     public bool IsGrounded()
     {
         return isGrounded;
@@ -219,72 +254,122 @@ public class PlayerController : MonoBehaviour
     {
         return rigidBody.velocity.x;
     }
+    public float GetCharge()
+    {
+        return charge;
+    }
+    public int GetPlayerNum()
+    {
+        return playerNum;
+    }
+
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Charging Platform")
+    //    {
+    //        charging = true;
+    //    }
+    //}
+
+    //void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Charging Platform")
+    //    {
+    //        charging = false;
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "projectile")
+        {
+            //Debug.Log(collision.gameObject.GetComponent<ProjectileController>().playerNum);
+            //Debug.Log(playerNum);
+            if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum)
+            {
+                float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
+                charge += calcDamage;
+                //Debug.Log(calcDamage);
+                //Debug.Log(charge);
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    bool IsCharging()
+    {
+        return isGrounded && Mathf.Abs(rigidBody.velocity.x) > 0.25f;
+        //return isGrounded && charging && Mathf.Abs(rigidbody.velocity.x) > 0.25f;
+    }
 
     public void Shoot(){
-        if (pCharge.charge < 5) return;     
-        int p = (int) pCharge.charge / 20;
+        if (charge < 5) return;     
+        int p = (int) charge / 20;
         float xdirection = getForward().x;
-        
-
-        ProjectileController projectile = Instantiate (
-            projectiles[p],
-            transform.position + new Vector3(xdirection,0,-3),
-            transform.rotation
-        );
-        projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-        projectile.Shoot(getForward(), projectileProps[p, 0]);
-        projectile.tag = "projectile";
-        projectile.damage = pCharge.charge;
-        projectile.playerNum = playerNum;
-        Destroy(projectile.gameObject, projectileProps[p, 1]);
-
-        if (p == 2) {
-            ProjectileController projectileUpper = Instantiate (
+        if(p <= projectiles.Length)
+        {
+            ProjectileController projectile = Instantiate(
                 projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
-                Quaternion.Euler(0, 0, 20 * xdirection)
+                transform.position + new Vector3(xdirection, 0, -3),
+                transform.rotation
             );
-            projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p,0]);
-            projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileUpper.tag = "projectile";
-            Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
+            projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            projectile.Shoot(getForward(), projectileProps[p, 0]);
+            projectile.tag = "projectile";
+            projectile.damage = charge;
+            projectile.playerNum = playerNum;
+            Destroy(projectile.gameObject, projectileProps[p, 1]);
 
-            ProjectileController projectileLower = Instantiate (
-                projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
-                Quaternion.Euler(0, 0, -20 * xdirection)
-            );
-            projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
-            projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileLower.tag = "projectile";
-            Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+            if (p == 2)
+            {
+                ProjectileController projectileUpper = Instantiate(
+                    projectiles[p],
+                    transform.position + new Vector3(xdirection, 0, -3),
+                    Quaternion.Euler(0, 0, 20 * xdirection)
+                );
+                projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p, 0]);
+                projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                projectileUpper.tag = "projectile";
+                Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
+
+                ProjectileController projectileLower = Instantiate(
+                    projectiles[p],
+                    transform.position + new Vector3(xdirection, 0, -3),
+                    Quaternion.Euler(0, 0, -20 * xdirection)
+                );
+                projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p, 0]);
+                projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                projectileLower.tag = "projectile";
+                Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+            }
+
+            charge = 0;
+
+            //Play sound
+            switch (p)
+            {
+                case 0:
+                    playSound(tiddlerClip);
+                    break;
+                case 1:
+                    playSound(kiBlastClip);
+                    break;
+                case 2:
+                    playSound(shotgunClip);
+                    break;
+                case 3:
+                    playSound(sniperClip);
+                    break;
+                case 4:
+                    playSound(blastClip);
+                    break;
+                case 5:
+                    playSound(PDClip);
+                    break;
+            }
+            // Animation
+            animations.ShootAnim();
         }
-
-        pCharge.charge = 0;
-
-        //Play sound
-        switch (p) {
-            case 0:
-                playSound(tiddlerClip);
-                break;
-            case 1:
-                playSound(kiBlastClip);
-                break;
-            case 2:
-                playSound(shotgunClip);
-                break;
-            case 3:
-                playSound(sniperClip);
-                break;
-            case 4:
-                playSound(blastClip);
-                break;
-            case 5:
-                playSound(PDClip);
-                break;
-        }
-        // Animation
-        animations.ShootAnim();
     }
 
     public void FlipSlashHitBox()

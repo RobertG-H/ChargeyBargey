@@ -2180,7 +2180,18 @@ Prefab:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: meter
+      value: 
+      objectReference: {fileID: 1529870667}
+    - target: {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &956221906
@@ -2680,6 +2691,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1334808371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1596992864973398, guid: b4bc0e90a529de94ebce1944a9089960,
+    type: 2}
+  m_PrefabInternal: {fileID: 1257970241}
+--- !u!114 &1334808374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1334808371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26fd28f229c795444a67d331c90a80ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 2141251922}
+  - {fileID: 1781401114}
 --- !u!1001 &1337647383
 Prefab:
   m_ObjectHideFlags: 0
@@ -3818,7 +3848,18 @@ Prefab:
       propertyPath: playerNum
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: meter
+      value: 
+      objectReference: {fileID: 1306645562}
+    - target: {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1781401114 stripped
