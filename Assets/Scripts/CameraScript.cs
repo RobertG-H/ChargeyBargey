@@ -22,14 +22,16 @@ public class CameraScript : MonoBehaviour {
     [SerializeField]
     private float maxChange;
 
+    private Camera pcam;
+
     // Use this for initialization
     void Start () {
-	}
+        pcam = Camera.main;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Camera pcam = Camera.main;
-
+        
         float xTotal = 0;
         float yTotal = 0;
         float xMax = 0;
@@ -84,13 +86,13 @@ public class CameraScript : MonoBehaviour {
         float camVar = 0;
 
         // Get new camera size
-        if (xDiff > yDiff)
+        if (xDiff > yDiff * 2)
         {
-            camVar = sizeFactor * Mathf.Pow(xDiff / 2f, 1.5f);
+            camVar = sizeFactor * Mathf.Pow(xDiff / 1.5f, 1f);
         }
         else
         {
-            camVar = sizeFactor * Mathf.Pow(yDiff, 1.5f);
+            camVar = sizeFactor * Mathf.Pow(yDiff * 1.25f, 1f);
         }
 
         // Restrict camera size
