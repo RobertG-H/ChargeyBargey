@@ -64,6 +64,14 @@ public class playerCharge : MonoBehaviour {
                 if (collision.gameObject.GetComponent<ProjectileController>().damage < 100)
                     Destroy(collision.gameObject);
             }
+        } else if ( collision.gameObject.tag == "charge" ) {
+            Debug.Log("hit by ball");
+            Debug.Log(collision.gameObject.GetComponent<ball2>().charged);
+            if ( collision.gameObject.GetComponent<ball2>().charged == true ) {
+                Debug.Log("hit by charged ball");
+                charge += 50.0f;
+                collision.gameObject.GetComponent<ball2>().charged = false;
+            }
         }
     }
 
