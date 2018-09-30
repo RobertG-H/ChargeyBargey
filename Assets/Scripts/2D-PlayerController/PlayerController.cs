@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     public ProjectileController projectile;
 
     #region Charging
-    private float CHARGERATE = 100f;//20f;
+    private float CHARGERATE = 20f;
     private float DISCHARGERATE = 14f;
     private float charge;
     #endregion
