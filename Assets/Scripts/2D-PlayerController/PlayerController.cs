@@ -28,12 +28,12 @@ public class PlayerController : MonoBehaviour
 
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
-        {20, 0.5f},
-        {20, 3},
-        {10, 1},
-        {20, 3},
-        {30, 3},
-        {20, 3},
+        {30, 0.35f},
+        {20, 1},
+        {12, 3},
+        {50, 10},
+        {25, 10},
+        {8, 20},
     };
     private playerCharge pCharge;
 
@@ -224,27 +224,65 @@ public class PlayerController : MonoBehaviour
         if (pCharge.charge < 5) return;     
         int p = (int) pCharge.charge / 20;
         float xdirection = getForward().x;
-        
+        float power = pCharge.charge;
+
+        if (p == 0)
+            power = 2;
+        else if (p == 2)
+            power = 0.6f * pCharge.charge;
+        else if (p == 5)
+            power = 101;
 
         ProjectileController projectile = Instantiate (
             projectiles[p],
             transform.position + new Vector3(xdirection,0,-3),
             transform.rotation
+        ); 
+        projectile.Shoot(
+            getForward(),
+            projectileProps[p, 0],
+            projectileProps[p, 1],
+            power,
+            playerNum,
+            xdirection
         );
-        projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-        projectile.Shoot(getForward(), projectileProps[p, 0]);
-        projectile.tag = "projectile";
-        projectile.damage = pCharge.charge;
-        projectile.playerNum = playerNum;
-        Destroy(projectile.gameObject, projectileProps[p, 1]);
 
+         if (p == 2) {
+            ProjectileController projectileUpper = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, 20 * xdirection)
+            );
+            projectileUpper.Shoot(
+                new Vector2(xdirection, 0.446f),
+                projectileProps[p,0],
+                projectileProps[p,1],
+                power,
+                playerNum,
+                xdirection
+            );
+            ProjectileController projectileLower = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, -20 * xdirection)
+            );
+            projectileLower.Shoot(
+                new Vector2(xdirection, -0.446f),
+                projectileProps[p,0],
+                projectileProps[p,1],
+                power,
+                playerNum,
+                xdirection
+            );
+         }
+/*
         if (p == 2) {
             ProjectileController projectileUpper = Instantiate (
                 projectiles[p],
                 transform.position + new Vector3(xdirection,0,-3),
                 Quaternion.Euler(0, 0, 20 * xdirection)
             );
-            projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p,0]);
+            
             projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
             projectileUpper.tag = "projectile";
             Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
@@ -259,8 +297,11 @@ public class PlayerController : MonoBehaviour
             projectileLower.tag = "projectile";
             Destroy(projectileLower.gameObject, projectileProps[p, 1]);
         }
-
-        pCharge.charge = 0;
+        */
+        if (p == 0)
+            pCharge.charge -= 2;
+        else
+            pCharge.charge = 0;
 
         //Play sound
         switch (p) {
