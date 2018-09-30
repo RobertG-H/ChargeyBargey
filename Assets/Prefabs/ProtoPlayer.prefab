@@ -223,7 +223,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashHitBox: {fileID: 0}
   projectiles:
+  - {fileID: 114442568222436112, guid: 85a3a080a42faf44d80e29ff6983f62c, type: 2}
   - {fileID: 114936095517231488, guid: ca8248188d42d494ab4a31a6bf5cafd6, type: 2}
+  - {fileID: 114268287741858190, guid: c8dde5da2c505994db2f0a4a24709149, type: 2}
+  - {fileID: 114984438175874890, guid: d3faff1294705a543b698251414cce15, type: 2}
+  - {fileID: 114764389486700446, guid: 8652b4f6ff3b36546bd3d5ad14744364, type: 2}
+  - {fileID: 114633689662005148, guid: fe8d4dbf97d501e4593613176066d930, type: 2}
   rayCastDownDist: 2
 --- !u!114 &114027235993531950
 MonoBehaviour:
