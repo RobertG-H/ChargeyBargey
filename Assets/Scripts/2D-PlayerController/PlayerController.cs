@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
     public AudioClip turnClip;
     public AudioClip jumpClip;
     public AudioClip deathClip;
+    public AudioClip tiddlerClip;
+    public AudioClip kiBlastClip;
+    public AudioClip shotgunClip;
+    public AudioClip sniperClip;
+    public AudioClip blastClip;
+    public AudioClip PDClip;
 
     public AudioSource audioSource;
 
@@ -217,6 +223,7 @@ public class PlayerController : MonoBehaviour
         if (pCharge.charge < 5) return;     
         int p = (int) pCharge.charge / 20;
         float xdirection = getForward().x;
+        
 
         ProjectileController projectile = Instantiate (
             projectiles[p],
@@ -253,6 +260,30 @@ public class PlayerController : MonoBehaviour
         }
 
         pCharge.charge = 0;
+
+        //Play sound
+        switch (p) {
+            case 0:
+                playSound(tiddlerClip);
+                break;
+            case 1:
+                playSound(kiBlastClip);
+                break;
+            case 2:
+                playSound(shotgunClip);
+                break;
+            case 3:
+                playSound(sniperClip);
+                break;
+            case 4:
+                playSound(blastClip);
+                break;
+            case 5:
+                playSound(PDClip);
+                break;
+        }
+        // Animation
+        animations.ShootAnim();
     }
 
     public void FlipSlashHitBox()
