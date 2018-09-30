@@ -38,12 +38,12 @@ public class PlayerAnimations : MonoBehaviour
         headAnim.SetFloat("speedX", Math.Abs(controller.GetSpeedX() * 0.1f));
         bodyAnim.SetInteger("currentState", stateController.currentState);
         bodyAnim.SetFloat("speedX", Math.Abs(controller.GetSpeedX() * 0.1f));
-        //Anim.SetBool("slash", playerStateController.slash);
         if ((controller.GetSpeedX() > 0 && headSpriteRend.flipX) || (controller.GetSpeedX() < 0 && !headSpriteRend.flipX) && (stateController.currentState != (int)PlayerStateController.state.FALLING && stateController.currentState != (int)PlayerStateController.state.JUMPING))
         {
             headSpriteRend.flipX = !headSpriteRend.flipX;
             bodySpriteRend.flipX = !bodySpriteRend.flipX;
-            //controller.FlipSlashHitBox();
+            Debug.Log("Turning");
+            controller.playTurnSound();
         }
         updateParticles();
     }
@@ -69,11 +69,4 @@ public class PlayerAnimations : MonoBehaviour
         playerParticlesRotation = newDir;
         playerParticles.transform.rotation = Quaternion.LookRotation(newDir);
     }
-
-    /*
-    public void SlashAnim()
-    {
-        anim.SetTrigger("slash");
-    }
-    */
 }

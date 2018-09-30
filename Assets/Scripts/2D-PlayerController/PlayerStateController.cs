@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour {
 
-    public enum state {IDLE, WALKING, JUMPING, FALLING};
+    public delegate void DeathEvent(int playerNum);
+    public event DeathEvent OnPlayerDeath;
+    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD, WALLSLIDE};
     public int currentState;
     [SerializeField]
     private int playerNum;
@@ -20,28 +22,42 @@ public class PlayerStateController : MonoBehaviour {
     }
     void Update()
     {
-        if (CheckIdle())
-        {
+        if (CheckIdle()) {
             SetStateIdle();
         }
-        else if (CheckWalking())
-        {
+        // Need to define this later	
+        //else if (CheckDeath())	
+        //{	
+        //    SetStateDead();	
+        //}
+        else if (CheckWall()) {
+            SetStateWall();
+        }
+        else if (CheckWalking()) {
             SetStateWalking();
         }
-        else if (CheckJumping())
-        {
+        else if (CheckJumping()) {
             SetStateJumping();
         }
-        else if (CheckFalling())
-        {
+        else if (CheckFalling()) {
             SetStateFalling();
         }
+
 
     }
 
     private bool CheckIdle()
     {
-        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0 && Input.GetAxisRaw("Vertical" + playerNum.ToString()) == 0)
+        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0)
+            return true;
+        return false;
+    }
+
+    private bool CheckWall() 
+    {
+        int layerMask = 1 << 2;
+        layerMask = ~layerMask;
+        if (controller.CheckWalled(layerMask))
             return true;
         return false;
     }
@@ -72,6 +88,11 @@ public class PlayerStateController : MonoBehaviour {
         currentState = (int)state.IDLE;
     }
 
+    public void SetStateWall() 
+    {
+        currentState = (int)state.WALLSLIDE;
+    }
+
     public void SetStateWalking()
     {
         currentState = (int)state.WALKING;
@@ -86,4 +107,10 @@ public class PlayerStateController : MonoBehaviour {
     {
         currentState = (int)state.FALLING;
     }
+
+    public void SetStateDead() {
+        currentState = (int)state.DEAD;
+        OnPlayerDeath(playerNum);
+    }
+
 }
