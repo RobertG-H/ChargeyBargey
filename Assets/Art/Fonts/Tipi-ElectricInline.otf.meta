@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ce62216ac6fbed4498e5f3fae7162f78
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Tipi
+  fontNames:
+  - Tipi
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 74f932f667d682f489f5163e1ce8e851, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

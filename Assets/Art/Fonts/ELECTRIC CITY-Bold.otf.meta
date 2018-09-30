@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 1f4df80b2716e514d8f905ff0e054858
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ELECTRIC CITY
+  fontNames:
+  - ELECTRIC CITY
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bd4ea07eb9ad1a54980080995b19ed23, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
