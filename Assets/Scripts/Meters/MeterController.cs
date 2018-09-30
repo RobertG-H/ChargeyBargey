@@ -6,7 +6,7 @@ public class MeterController : MonoBehaviour {
 
 	private RectTransform rectTransform;
 
-	private const int MAXLENGTH = 200;
+	private const int MAXLENGTH = 175;
 	private float length;
 	private float leftPos;
 	// Use this for initialization
