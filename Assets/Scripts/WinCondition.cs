@@ -63,7 +63,20 @@ public class WinCondition : MonoBehaviour
             }
             //scores[winner]++;
             int playerNumber = winner + 1;
-            roundState = "Player " + playerNumber.ToString() + "Wins This Round!"; //TO DO: change this to character name?	
+            switch (playerNumber) {
+                case 1:
+                    roundState = "Bellino Wins!";
+                    break;
+                case 2:
+                    roundState = "Vanzetti Wins!";
+                    break;
+                case 3:
+                    roundState = "Sacco Wins!";
+                    break;
+                case 4:
+                    roundState = "Clarence Wins!";
+                    break;
+            }
             OnRoundComplete(roundState);
         }
         // Ties if no players are alive	
