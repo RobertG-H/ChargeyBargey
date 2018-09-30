@@ -1361,7 +1361,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 1382498157}
+      objectReference: {fileID: 1848617440}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player4
@@ -1422,6 +1422,42 @@ Prefab:
       propertyPath: playerNum
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 114442568222436112, guid: 5980dadc5eeccac4887c9f47d9dfd342,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 114936095517231488, guid: 46ff9eb33f1a13b4cab839c70a00b22a,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 114268287741858190, guid: 142d62d2230ccb94aa41cb29ba691345,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 114984438175874890, guid: 24a66f8275de3b44a99d04a78708856d,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 114764389486700446, guid: 9cfc8c56350ddc34085b3ee61138b2fc,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 114633689662005148, guid: edcea68f5d95f4b4b83ee2d736368745,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
@@ -3571,7 +3607,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 1848617440}
+      objectReference: {fileID: 1382498157}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player3
@@ -3632,6 +3668,42 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.key0.b
       value: 0.77254903
       objectReference: {fileID: 0}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 114442568222436112, guid: 6a60693491c0af14aa5636b3a0fc3019,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 114936095517231488, guid: 34464088f65dc314eb5ec51707ab8573,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 114268287741858190, guid: c51a425559fbeb64dad8df641801b110,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 114984438175874890, guid: fbdf35b1926d7f445a1ef3a2a09d5dba,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 114764389486700446, guid: 1d1fceacb962b76449a2ca5f9dc4678f,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 114633689662005148, guid: b80a12aaefe17c8469bc52ecbddd7473,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
@@ -4828,7 +4900,7 @@ Prefab:
         type: 2}
       propertyPath: projectiles.Array.data[0]
       value: 
-      objectReference: {fileID: 114442568222436112, guid: 85a3a080a42faf44d80e29ff6983f62c,
+      objectReference: {fileID: 114442568222436112, guid: 1a6341c4d078d414480b14be3655d4b7,
         type: 2}
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
@@ -4929,25 +5001,25 @@ Prefab:
         type: 2}
       propertyPath: projectiles.Array.data[2]
       value: 
-      objectReference: {fileID: 114268287741858190, guid: c8dde5da2c505994db2f0a4a24709149,
+      objectReference: {fileID: 114268287741858190, guid: 8b5721461da12574e8216b980e3793b5,
         type: 2}
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
       propertyPath: projectiles.Array.data[3]
       value: 
-      objectReference: {fileID: 114984438175874890, guid: d3faff1294705a543b698251414cce15,
+      objectReference: {fileID: 114984438175874890, guid: 4c226418ebf069b458f491bf51e05cd3,
         type: 2}
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
       propertyPath: projectiles.Array.data[4]
       value: 
-      objectReference: {fileID: 114764389486700446, guid: 8652b4f6ff3b36546bd3d5ad14744364,
+      objectReference: {fileID: 114764389486700446, guid: 74ca40e27069b3e458a5319fcc3318f2,
         type: 2}
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
       propertyPath: projectiles.Array.data[5]
       value: 
-      objectReference: {fileID: 114633689662005148, guid: fe8d4dbf97d501e4593613176066d930,
+      objectReference: {fileID: 114633689662005148, guid: a7175308f9ca5c9429f758ec0716fa1e,
         type: 2}
     - target: {fileID: 0}
       propertyPath: playerNum
@@ -4978,6 +5050,12 @@ Prefab:
       propertyPath: m_Color.g
       value: 0.78039217
       objectReference: {fileID: 0}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 114936095517231488, guid: 809dddeaa6c1b80459b6a146c421515a,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
