@@ -35,9 +35,9 @@ public class ball2 : MonoBehaviour {
 		body.sharedMaterial.bounciness = 1.5f;
 		Vector3 force = new Vector2(1,1) * velocity.x * 100;
         body.AddForce(force);
-		Debug.Log("velocity");
-		Debug.Log(Mathf.Abs(body.velocity.x));
-		Debug.Log(body.velocity.x);
+		//Debug.Log("velocity");
+		//Debug.Log(Mathf.Abs(body.velocity.x));
+		//Debug.Log(body.velocity.x);
 		anim.SetTrigger("charged");
 		charged = true;
     }

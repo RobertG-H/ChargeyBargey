@@ -30,8 +30,8 @@ public class MeterController : MonoBehaviour {
 	public void SetLength (float percent) {
 		if (percent >= 100 && length < MAXLENGTH) {
 			InvokeRepeating("Blink", 0.4f - Time.unscaledTime % 0.4f, 0.2f);
-			Debug.Log(0.2f - Time.unscaledTime % 0.2f);
-			Debug.Log(Time.unscaledTime);
+			//Debug.Log(0.2f - Time.unscaledTime % 0.2f);
+			//Debug.Log(Time.unscaledTime);
 		} else if (percent < 100 && length >= MAXLENGTH) {
 			CancelInvoke("Blink");
 			renderer.enabled = true;

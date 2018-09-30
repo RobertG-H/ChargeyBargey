@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Charging Platform
   - projectile
+  - charge
   layers:
   - Default
   - TransparentFX
