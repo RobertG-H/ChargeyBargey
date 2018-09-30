@@ -38,12 +38,12 @@ public class PlayerController : MonoBehaviour
 
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
-        {20, 0.5f},
-        {20, 3},
-        {10, 1},
-        {20, 3},
-        {30, 3},
-        {20, 3},
+        {30, 0.35f},
+        {20, 1},
+        {12, 3},
+        {50, 10},
+        {25, 10},
+        {8, 20},
     };
     #region Conditions
     private bool isGrounded;
@@ -306,6 +306,60 @@ public class PlayerController : MonoBehaviour
         if (charge < 5) return;     
         int p = (int) charge / 20;
         float xdirection = getForward().x;
+        float power = charge;
+
+        if (p == 0)
+            power = 2;
+        else if (p == 2)
+            power = 0.6f * charge;
+        else if (p == 5)
+            power = 101;
+
+        ProjectileController projectile = Instantiate (
+            projectiles[p],
+            transform.position + new Vector3(xdirection,0,-3),
+            transform.rotation
+        ); 
+        projectile.Shoot(
+            getForward(),
+            projectileProps[p, 0],
+            projectileProps[p, 1],
+            power,
+            playerNum,
+            xdirection
+        );
+
+         if (p == 2) {
+            ProjectileController projectileUpper = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, 20 * xdirection)
+            );
+            projectileUpper.Shoot(
+                new Vector2(xdirection, 0.446f),
+                projectileProps[p,0],
+                projectileProps[p,1],
+                power,
+                playerNum,
+                xdirection
+            );
+            ProjectileController projectileLower = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, -20 * xdirection)
+            );
+            projectileLower.Shoot(
+                new Vector2(xdirection, -0.446f),
+                projectileProps[p,0],
+                projectileProps[p,1],
+                power,
+                playerNum,
+                xdirection
+            );
+         }
+/*
+        if (p == 2) {
+            ProjectileController projectileUpper = Instantiate (
         if(p <= projectiles.Length)
         {
             ProjectileController projectile = Instantiate(
@@ -313,62 +367,46 @@ public class PlayerController : MonoBehaviour
                 transform.position + new Vector3(xdirection, 0, -3),
                 transform.rotation
             );
-            projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectile.Shoot(getForward(), projectileProps[p, 0]);
-            projectile.tag = "projectile";
-            projectile.damage = charge;
-            projectile.playerNum = playerNum;
-            Destroy(projectile.gameObject, projectileProps[p, 1]);
+            projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            projectileUpper.tag = "projectile";
+            Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
 
-            if (p == 2)
-            {
-                ProjectileController projectileUpper = Instantiate(
-                    projectiles[p],
-                    transform.position + new Vector3(xdirection, 0, -3),
-                    Quaternion.Euler(0, 0, 20 * xdirection)
-                );
-                projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p, 0]);
-                projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-                projectileUpper.tag = "projectile";
-                Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
-
-                ProjectileController projectileLower = Instantiate(
-                    projectiles[p],
-                    transform.position + new Vector3(xdirection, 0, -3),
-                    Quaternion.Euler(0, 0, -20 * xdirection)
-                );
-                projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p, 0]);
-                projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-                projectileLower.tag = "projectile";
-                Destroy(projectileLower.gameObject, projectileProps[p, 1]);
-            }
-
+            ProjectileController projectileLower = Instantiate (
+                projectiles[p],
+                transform.position + new Vector3(xdirection,0,-3),
+                Quaternion.Euler(0, 0, -20 * xdirection)
+            );
+            projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
+            projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            projectileLower.tag = "projectile";
+            Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+        }
+        */
+        if (p == 0)
+            charge -= 2;
+        else
             charge = 0;
 
-            //Play sound
-            switch (p)
-            {
-                case 0:
-                    playSound(tiddlerClip);
-                    break;
-                case 1:
-                    playSound(kiBlastClip);
-                    break;
-                case 2:
-                    playSound(shotgunClip);
-                    break;
-                case 3:
-                    playSound(sniperClip);
-                    break;
-                case 4:
-                    playSound(blastClip);
-                    break;
-                case 5:
-                    playSound(PDClip);
-                    break;
-            }
-            // Animation
-            animations.ShootAnim();
+        //Play sound
+        switch (p) {
+            case 0:
+                playSound(tiddlerClip);
+                break;
+            case 1:
+                playSound(kiBlastClip);
+                break;
+            case 2:
+                playSound(shotgunClip);
+                break;
+            case 3:
+                playSound(sniperClip);
+                break;
+            case 4:
+                playSound(blastClip);
+                break;
+            case 5:
+                playSound(PDClip);
+                break;
         }
     }
 
