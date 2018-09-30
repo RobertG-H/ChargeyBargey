@@ -305,12 +305,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "charge")
         {
             Debug.Log("hit by ball");
-            Debug.Log(collision.gameObject.GetComponent<ball2>().charged);
-            if (collision.gameObject.GetComponent<ball2>().charged == true)
+            Debug.Log(collision.gameObject.GetComponent<Ball>().charged);
+            if (collision.gameObject.GetComponent<Ball>().charged == true)
             {
                 Debug.Log("hit by charged ball");
                 charge += 50.0f;
-                collision.gameObject.GetComponent<ball2>().charged = false;
+                collision.gameObject.GetComponent<Ball>().charged = false;
             }
         }
     }
