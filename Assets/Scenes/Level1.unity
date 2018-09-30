@@ -1361,7 +1361,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1382498157}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player4
@@ -3457,8 +3457,8 @@ MonoBehaviour:
   players:
   - {fileID: 2141251922}
   - {fileID: 1781401114}
-  - {fileID: 912513163}
-  - {fileID: 1120634115}
+  - {fileID: 2036469854}
+  - {fileID: 1941197043}
 --- !u!1001 &1337647383
 Prefab:
   m_ObjectHideFlags: 0
@@ -3571,7 +3571,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1848617440}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player3
@@ -5122,6 +5122,12 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224194030455548764, guid: a84fc58ff437ded4eb16129199878ff7,
     type: 2}
   m_PrefabInternal: {fileID: 1315364426}
+--- !u!114 &1848617440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114502192824166924, guid: a84fc58ff437ded4eb16129199878ff7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1315364426}
+  m_Script: {fileID: 11500000, guid: 762cdf26dc62d324c83f63bbb41bf5c2, type: 3}
 --- !u!1001 &1881389838
 Prefab:
   m_ObjectHideFlags: 0
@@ -5341,6 +5347,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973012332517454, guid: b14a23cca142b1f4ea67eb30aab946e7,
     type: 2}
   m_PrefabInternal: {fileID: 1929789273}
+--- !u!1 &1941197043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50,
+    type: 2}
+  m_PrefabInternal: {fileID: 562838553}
 --- !u!4 &1964550705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4577027948301336, guid: d156d5415e5c30a4abde7c363d8b621f,
@@ -5676,12 +5687,12 @@ Prefab:
         type: 2}
       propertyPath: players.Array.data[2]
       value: 
-      objectReference: {fileID: 912513163}
+      objectReference: {fileID: 2036469854}
     - target: {fileID: 114986771843681632, guid: 0fcfa80a08fea604a87bce102893208b,
         type: 2}
       propertyPath: players.Array.data[3]
       value: 
-      objectReference: {fileID: 1120634115}
+      objectReference: {fileID: 1941197043}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fcfa80a08fea604a87bce102893208b, type: 2}
   m_IsPrefabAsset: 0
@@ -5764,6 +5775,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2019886010}
   m_CullTransparentMesh: 0
+--- !u!1 &2036469854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1371013189}
 --- !u!1001 &2046556279
 Prefab:
   m_ObjectHideFlags: 0
