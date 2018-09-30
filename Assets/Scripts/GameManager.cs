@@ -18,20 +18,32 @@ public class GameManager : MonoBehaviour {
     public WinCondition winCondition;
     private bool gameOver = false;
 
-    AudioSource pauseMusic;
+    AudioSource audioSource;
     public GameObject gameSongObject;
     AudioSource gameMusic;
+    public AudioClip winSong;
+    public AudioClip pauseSong;
+    public AudioClip readyGoClip;
+
+    private bool playOnce = true;
 
 	// Use this for initialization
 	void Start () {
         isPaused = false;
         winCondition = GetComponent<WinCondition>();
         winCondition.OnRoundComplete += OnRoundCompleteHandler;
-        pauseMusic = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         gameMusic = gameSongObject.GetComponent<AudioSource>();
     }
 
-	void Update () {
+    void Update () {
+
+        if (playOnce) {
+            playOnce = false;
+            audioSource.clip = readyGoClip;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
 
 		if (Input.GetKeyDown("p") || Input.GetKeyDown("escape")) {
             if (!gameOver) {
@@ -44,14 +56,16 @@ public class GameManager : MonoBehaviour {
 	}
 
     public void TogglePause() {
+        audioSource.loop = true;
+        audioSource.clip = pauseSong;
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0 : 1;
         PauseUI.SetActive(isPaused);
         if (isPaused) {
-            pauseMusic.Play();
+            audioSource.Play();
             gameMusic.volume = 0;
         } else {
-            pauseMusic.Stop();
+            audioSource.Stop();
             gameMusic.volume = 1;
         }
     }
@@ -72,10 +86,14 @@ public class GameManager : MonoBehaviour {
 
     public void OnRoundCompleteHandler(string msg)
     {
+        audioSource.loop = true;
+        audioSource.clip = winSong;
+        audioSource.Play();
+        gameMusic.volume = 0;
         EndUI.SetActive(true);
         gameOver = true;
         WinnerText.GetComponent<Text>().text = msg;
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         Debug.Log(msg);
     }
 }

@@ -128,6 +128,7 @@ public class PlayerStateController : MonoBehaviour {
         {
             currentState = (int)state.DEAD;
             OnPlayerDeath(controller.GetPlayerNum());
+            controller.playDead();
         }
         else
         {

@@ -1460,7 +1460,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 1529870667}
+      objectReference: {fileID: 1382498157}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player4
@@ -1524,6 +1524,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &614863775 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114502192824166924, guid: a84fc58ff437ded4eb16129199878ff7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1315364426}
+  m_Script: {fileID: 11500000, guid: 762cdf26dc62d324c83f63bbb41bf5c2, type: 3}
 --- !u!1001 &732064010
 Prefab:
   m_ObjectHideFlags: 0
@@ -2083,6 +2089,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4799042725132058, guid: 500f55d6953384649b3420a290e9123b,
     type: 2}
   m_PrefabInternal: {fileID: 870241261}
+--- !u!1 &912513163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50,
+    type: 2}
+  m_PrefabInternal: {fileID: 1371013189}
 --- !u!1001 &930504771
 Prefab:
   m_ObjectHideFlags: 0
@@ -2648,6 +2659,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4973012332517454, guid: b14a23cca142b1f4ea67eb30aab946e7,
     type: 2}
   m_PrefabInternal: {fileID: 1098658566}
+--- !u!1 &1120634115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50,
+    type: 2}
+  m_PrefabInternal: {fileID: 562838553}
 --- !u!1001 &1146993920
 Prefab:
   m_ObjectHideFlags: 0
@@ -2776,6 +2792,21 @@ Prefab:
       propertyPath: WinnerText
       value: 
       objectReference: {fileID: 253478534}
+    - target: {fileID: 114153447872658936, guid: b4bc0e90a529de94ebce1944a9089960,
+        type: 2}
+      propertyPath: winSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 75a028a4594e5654d8842665cdc0e45a, type: 3}
+    - target: {fileID: 114153447872658936, guid: b4bc0e90a529de94ebce1944a9089960,
+        type: 2}
+      propertyPath: pauseSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 834e77b4ecbff274f9fdb7ba1880bf4e, type: 3}
+    - target: {fileID: 114153447872658936, guid: b4bc0e90a529de94ebce1944a9089960,
+        type: 2}
+      propertyPath: readyGoClip
+      value: 
+      objectReference: {fileID: 8300000, guid: be35ec659e00ba84998454179456aadd, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4bc0e90a529de94ebce1944a9089960, type: 2}
   m_IsPrefabAsset: 0
@@ -3271,6 +3302,8 @@ MonoBehaviour:
   players:
   - {fileID: 2141251922}
   - {fileID: 1781401114}
+  - {fileID: 912513163}
+  - {fileID: 1120634115}
 --- !u!1001 &1337647383
 Prefab:
   m_ObjectHideFlags: 0
@@ -3383,7 +3416,7 @@ Prefab:
         type: 2}
       propertyPath: meter
       value: 
-      objectReference: {fileID: 1529870667}
+      objectReference: {fileID: 614863775}
     - target: {fileID: 1849635688654086, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_Name
       value: Player3
@@ -3529,6 +3562,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1371734207}
   m_CullTransparentMesh: 0
+--- !u!114 &1382498157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114502192824166924, guid: a84fc58ff437ded4eb16129199878ff7,
+    type: 2}
+  m_PrefabInternal: {fileID: 1738374101}
+  m_Script: {fileID: 11500000, guid: 762cdf26dc62d324c83f63bbb41bf5c2, type: 3}
 --- !u!1001 &1452645862
 Prefab:
   m_ObjectHideFlags: 0
@@ -5217,6 +5256,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114986771843681632, guid: 0fcfa80a08fea604a87bce102893208b,
+        type: 2}
+      propertyPath: players.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4859452183034642, guid: 0fcfa80a08fea604a87bce102893208b, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5329,6 +5373,16 @@ Prefab:
       propertyPath: orthographic size
       value: 15.7
       objectReference: {fileID: 0}
+    - target: {fileID: 114986771843681632, guid: 0fcfa80a08fea604a87bce102893208b,
+        type: 2}
+      propertyPath: players.Array.data[2]
+      value: 
+      objectReference: {fileID: 912513163}
+    - target: {fileID: 114986771843681632, guid: 0fcfa80a08fea604a87bce102893208b,
+        type: 2}
+      propertyPath: players.Array.data[3]
+      value: 
+      objectReference: {fileID: 1120634115}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fcfa80a08fea604a87bce102893208b, type: 2}
   m_IsPrefabAsset: 0

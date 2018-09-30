@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
+    private CapsuleCollider2D collider;
     [SerializeField]
     private GameObject slashHitBox;
     [SerializeField]
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public MeterController meter;
     public ProjectileController projectile;
+    public bool IsDead = false;
 
     #region Charging
     private float CHARGERATE = 20f;
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         audioSources = GetComponents<AudioSource>();
+        collider = GetComponent<CapsuleCollider2D>();
         charge = 0.0f;
     }
 
@@ -433,6 +436,21 @@ public class PlayerController : MonoBehaviour
     public void playTurnSound() {
         audioSources[0].clip = turnClip;
         audioSources[0].Play();
+    }
+
+    public void playDead() {
+        IsDead = true;
+        playSound(deathClip);
+        StartCoroutine(destroyPlayerAfterDeath());
+    }
+
+    IEnumerator destroyPlayerAfterDeath() {
+        yield return new WaitForSeconds(0.7f);
+        GameObject.Destroy(collider);
+        animations.HidePlayer();
+        audioSources[0].volume = 0;
+        audioSources[1].volume = 0;
+        rigidBody.bodyType = RigidbodyType2D.Static;
     }
 
 }

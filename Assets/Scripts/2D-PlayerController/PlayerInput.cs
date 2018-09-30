@@ -18,37 +18,32 @@ public class PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) < 0)
-        {
-            controller.Move(-1.0f);
-           
-        }
-        else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) > 0)
-        {
-            controller.Move(1.0f);
-        }
-        else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0)
-        {
-            controller.Stop();
-        }
+        if (!controller.IsDead) {
+            if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) < 0) {
+                controller.Move(-1.0f);
 
-        if (Input.GetAxisRaw("Vertical" + playerNum.ToString()) < 0)
-        {
-            controller.FastFall();
-        }
+            }
+            else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) > 0) {
+                controller.Move(1.0f);
+            }
+            else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0) {
+                controller.Stop();
+            }
 
-        if (Input.GetButtonDown("Jump" + playerNum.ToString()))
-        {
-            controller.JumpPressed();
-        }
-        else if (Input.GetButton("Jump" + playerNum.ToString()))
-        {
-            controller.ContinueJump();
-        }
+            if (Input.GetAxisRaw("Vertical" + playerNum.ToString()) < 0) {
+                controller.FastFall();
+            }
 
-        if  (Input.GetButtonDown("Fire" +  playerNum.ToString()))
-        {
-            controller.Shoot();
+            if (Input.GetButtonDown("Jump" + playerNum.ToString())) {
+                controller.JumpPressed();
+            }
+            else if (Input.GetButton("Jump" + playerNum.ToString())) {
+                controller.ContinueJump();
+            }
+
+            if (Input.GetButtonDown("Fire" + playerNum.ToString())) {
+                controller.Shoot();
+            }
         }
     }
 
