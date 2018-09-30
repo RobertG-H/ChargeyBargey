@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private bool touchingLeftWall;
     private bool touchingRightWall;
     private bool charging;
+    private bool shooting;
     #endregion
 
     private Vector3 fullHopPoint;
@@ -78,18 +79,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if ( !isGrounded ) {
+        if (shooting)
+            shooting = false;
+        if (!isGrounded)
+        {
             ACCELERATIONX = 100f;
-        } else if ( isGrounded ){
+        }
+        else if (isGrounded)
+        {
             ACCELERATIONX = 100f;
         }
         int layerMask = 1 << 2;
         layerMask = ~layerMask;
-        CheckGrounded( layerMask );
-        CheckWalled( layerMask );
+        CheckGrounded(layerMask);
+        CheckWalled(layerMask);
         UpdateCharge();
-
-
     }
 
     private void CheckGrounded( int layerMask )
@@ -169,7 +173,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Math.Abs(GetSpeedX()) > MAXSPEEDX)
         {
-            if( isGrounded )
+            //if( isGrounded )
                 rigidBody.velocity = new Vector2(MAXSPEEDX * Math.Sign(rigidBody.velocity.x), rigidBody.velocity.y);
         }
         else
@@ -224,11 +228,14 @@ public class PlayerController : MonoBehaviour
         touchingLeftWall = false;
         touchingRightWall = false;
         Jump();
-        //if ( dir == "right" ) {
-        //    rigidBody.AddForce(new Vector2(-600.0f, 650.0f));
-        //} else if ( dir == "left" ) {
-        //    rigidBody.AddForce(new Vector2(600.0f, 650.0f));
-        //}
+        if (dir == "right")
+        {
+            rigidBody.AddForce(new Vector2(-1200.0f, 0));
+        }
+        else if (dir == "left")
+        {
+            rigidBody.AddForce(new Vector2(1200.0f, 0));
+        }
     }
     public void FastFall()
     {
@@ -262,6 +269,11 @@ public class PlayerController : MonoBehaviour
     {
         return playerNum;
     }
+    public bool IsShooting()
+    {
+        return shooting;
+    }
+
 
     //void OnCollisionEnter2D(Collision2D collision)
     //{
@@ -288,10 +300,12 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum)
             {
                 float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
+                
                 charge += calcDamage;
                 //Debug.Log(calcDamage);
                 //Debug.Log(charge);
-                Destroy(collision.gameObject);
+                if (calcDamage < 80)
+                    Destroy(collision.gameObject);
             }
         }
     }
@@ -303,23 +317,41 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Shoot(){
-        if (charge < 5) return;     
-        int p = (int) charge / 20;
+        if (charge < 5) return;
+
+        shooting = true;
+
+
+        float currentCharge = charge;
+        shooting = true;
+        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionY;
+        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionX;
+        StartCoroutine(WaitFrames(currentCharge));
+
+    }
+
+    IEnumerator WaitFrames(float currentCharge)
+    {
+        yield return new WaitForSeconds(0.1f*charge/20);
+
+        int p = (int)currentCharge / 20;
         float xdirection = getForward().x;
-        float power = charge;
+        float power = currentCharge;
+
+        rigidBody.velocity = new Vector2(0, 0);
 
         if (p == 0)
             power = 2;
         else if (p == 2)
-            power = 0.6f * charge;
+            power = 0.6f * currentCharge;
         else if (p == 5)
             power = 101;
 
-        ProjectileController projectile = Instantiate (
+        ProjectileController projectile = Instantiate(
             projectiles[p],
-            transform.position + new Vector3(xdirection,0,-3),
+            transform.position + new Vector3(xdirection, 0, -3),
             transform.rotation
-        ); 
+        );
         projectile.Shoot(
             getForward(),
             projectileProps[p, 0],
@@ -329,66 +361,68 @@ public class PlayerController : MonoBehaviour
             xdirection
         );
 
-         if (p == 2) {
-            ProjectileController projectileUpper = Instantiate (
+        if (p == 2)
+        {
+            ProjectileController projectileUpper = Instantiate(
                 projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
+                transform.position + new Vector3(xdirection, 0, -3),
                 Quaternion.Euler(0, 0, 20 * xdirection)
             );
             projectileUpper.Shoot(
                 new Vector2(xdirection, 0.446f),
-                projectileProps[p,0],
-                projectileProps[p,1],
+                projectileProps[p, 0],
+                projectileProps[p, 1],
                 power,
                 playerNum,
                 xdirection
             );
-            ProjectileController projectileLower = Instantiate (
+            ProjectileController projectileLower = Instantiate(
                 projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
+                transform.position + new Vector3(xdirection, 0, -3),
                 Quaternion.Euler(0, 0, -20 * xdirection)
             );
             projectileLower.Shoot(
                 new Vector2(xdirection, -0.446f),
-                projectileProps[p,0],
-                projectileProps[p,1],
+                projectileProps[p, 0],
+                projectileProps[p, 1],
                 power,
                 playerNum,
                 xdirection
             );
-         }
-/*
-        if (p == 2) {
-            ProjectileController projectileUpper = Instantiate (
-        if(p <= projectiles.Length)
-        {
-            ProjectileController projectile = Instantiate(
-                projectiles[p],
-                transform.position + new Vector3(xdirection, 0, -3),
-                transform.rotation
-            );
-            projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileUpper.tag = "projectile";
-            Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
-
-            ProjectileController projectileLower = Instantiate (
-                projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
-                Quaternion.Euler(0, 0, -20 * xdirection)
-            );
-            projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
-            projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileLower.tag = "projectile";
-            Destroy(projectileLower.gameObject, projectileProps[p, 1]);
         }
-        */
+        /*
+                if (p == 2) {
+                    ProjectileController projectileUpper = Instantiate (
+                if(p <= projectiles.Length)
+                {
+                    ProjectileController projectile = Instantiate(
+                        projectiles[p],
+                        transform.position + new Vector3(xdirection, 0, -3),
+                        transform.rotation
+                    );
+                    projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                    projectileUpper.tag = "projectile";
+                    Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
+
+                    ProjectileController projectileLower = Instantiate (
+                        projectiles[p],
+                        transform.position + new Vector3(xdirection,0,-3),
+                        Quaternion.Euler(0, 0, -20 * xdirection)
+                    );
+                    projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
+                    projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                    projectileLower.tag = "projectile";
+                    Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+                }
+                */
         if (p == 0)
             charge -= 2;
         else
             charge = 0;
 
         //Play sound
-        switch (p) {
+        switch (p)
+        {
             case 0:
                 playSound(tiddlerClip);
                 break;
@@ -408,16 +442,18 @@ public class PlayerController : MonoBehaviour
                 playSound(PDClip);
                 break;
         }
+        rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
     }
 
-    public void FlipSlashHitBox()
-    {
-        // Uncomment for slash hitbox
-        /*
-        slashHitBox.transform.localPosition = new Vector2(-slashHitBox.transform.localPosition.x, slashHitBox.transform.localPosition.y);
-        slashHitBox.transform.localScale = new Vector2(-slashHitBox.transform.localScale.x, slashHitBox.transform.localScale.y);
-        */
-    }
+    //public void FlipSlashHitBox()
+    //{
+    //    // Uncomment for slash hitbox
+    //    /*
+    //    slashHitBox.transform.localPosition = new Vector2(-slashHitBox.transform.localPosition.x, slashHitBox.transform.localPosition.y);
+    //    slashHitBox.transform.localScale = new Vector2(-slashHitBox.transform.localScale.x, slashHitBox.transform.localScale.y);
+    //    */
+    //}
 
 
     public void playSound(AudioClip clipToPlay) {

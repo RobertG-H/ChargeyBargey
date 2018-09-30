@@ -17,6 +17,9 @@ public class PlayerAnimations : MonoBehaviour
     private SpriteRenderer headSpriteRend;
     private SpriteRenderer bodySpriteRend;
     private SpriteRenderer faceSpriteRend;
+    private ParticleSystem playerParticleSystem;
+    ParticleSystem.EmissionModule emissionModule;
+    ParticleSystem.ShapeModule shapeModule;
 
     private Vector3 playerParticlesRotation;
     private Vector3 particleTargetDir = new Vector3();
@@ -31,6 +34,9 @@ public class PlayerAnimations : MonoBehaviour
         headSpriteRend = Head.GetComponent<SpriteRenderer>();
         bodySpriteRend = Body.GetComponent<SpriteRenderer>();
         faceSpriteRend = Face.GetComponent<SpriteRenderer>();
+        playerParticleSystem = playerParticles.GetComponent<ParticleSystem>();
+        emissionModule = playerParticleSystem.emission;
+        shapeModule = playerParticleSystem.shape;
         playerParticlesRotation = new Vector3(270, 270, 0);
     }
 
@@ -39,9 +45,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         headAnim.SetInteger("currentState", stateController.currentState);
         headAnim.SetFloat("speedX", Math.Abs(controller.GetSpeedX() * 0.1f));
+
         bodyAnim.SetInteger("currentState", stateController.currentState);
         bodyAnim.SetFloat("speedX", Math.Abs(controller.GetSpeedX() * 0.1f));
-        if ((controller.GetSpeedX() > 0 && headSpriteRend.flipX) || (controller.GetSpeedX() < 0 && !headSpriteRend.flipX) && (stateController.currentState != (int)PlayerStateController.state.FALLING && stateController.currentState != (int)PlayerStateController.state.JUMPING))
+        if ((controller.GetSpeedX() > 0 && headSpriteRend.flipX) || (controller.GetSpeedX() < 0 && !headSpriteRend.flipX))// && (stateController.currentState != (int)PlayerStateController.state.FALLING && stateController.currentState != (int)PlayerStateController.state.JUMPING))
         {
             headSpriteRend.flipX = !headSpriteRend.flipX;
             bodySpriteRend.flipX = !bodySpriteRend.flipX;
@@ -71,10 +78,14 @@ public class PlayerAnimations : MonoBehaviour
         Vector3 newDir = Vector3.RotateTowards(playerParticlesRotation, particleTargetDir, step, 2.0f);
         playerParticlesRotation = newDir;
         playerParticles.transform.rotation = Quaternion.LookRotation(newDir);
+
+        emissionModule.rateOverTime = controller.GetCharge()*2;
+        shapeModule.angle = controller.GetCharge() / 4 + 13;
+
     }
 
-    public void ShootAnim() {
-        headAnim.SetTrigger("shoot");
-        bodyAnim.SetTrigger("shoot");
-    }
+    //public void ShootAnim() {
+    //    headAnim.SetTrigger("shoot");
+    //    bodyAnim.SetTrigger("shoot");
+    //}
 }

@@ -21,7 +21,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) < 0)
         {
             controller.Move(-1.0f);
-           
+
         }
         else if (Input.GetAxisRaw("Horizontal" + playerNum.ToString()) > 0)
         {
@@ -46,10 +46,11 @@ public class PlayerInput : MonoBehaviour
             controller.ContinueJump();
         }
 
-        if  (Input.GetButtonDown("Fire" +  playerNum.ToString()))
+        if (Input.GetButtonDown("Fire" + playerNum.ToString()))
         {
             controller.Shoot();
         }
+
     }
 
 }
