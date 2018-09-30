@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114984438175874890}
   - component: {fileID: 95016538737293368}
   - component: {fileID: 70560064615944124}
-  - component: {fileID: 70116809928356106}
   m_Layer: 0
   m_Name: Projectile3
   m_TagString: Untagged
@@ -56,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 14.302225
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -64,22 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &70116809928356106
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1659488650368186}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -6.344205, y: -0.024107717}
-  m_Size: {x: 5.8852925, y: 0.92233944}
-  m_Direction: 1
+  m_Constraints: 4
 --- !u!70 &70560064615944124
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -89,11 +73,11 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.8310025, y: 0.0000015698671}
-  m_Size: {x: 14.285254, y: 3.8615544}
+  m_Offset: {x: 1.2298905, y: -0.019388944}
+  m_Size: {x: 14.634326, y: 2.0388398}
   m_Direction: 1
 --- !u!95 &95016538737293368
 Animator:
@@ -124,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4078657193901274c9203f8906d1601f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  playerNum: 0
 --- !u!212 &212114304806412064
 SpriteRenderer:
   m_ObjectHideFlags: 1

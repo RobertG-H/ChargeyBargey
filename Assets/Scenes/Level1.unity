@@ -164,6 +164,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
   m_IsPrefabAsset: 0
@@ -331,6 +341,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -394,6 +414,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -444,6 +474,16 @@ Prefab:
     - target: {fileID: 1623440157324698, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
@@ -503,6 +543,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -567,6 +617,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -625,6 +685,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -697,6 +767,16 @@ Prefab:
     - target: {fileID: 1623440157324698, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
@@ -932,6 +1012,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
   m_IsPrefabAsset: 0
@@ -986,6 +1076,16 @@ Prefab:
     - target: {fileID: 1181102758792338, guid: 371abc575ed824a42ace2de3f96be74d, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371abc575ed824a42ace2de3f96be74d, type: 2}
@@ -1049,6 +1149,16 @@ Prefab:
     - target: {fileID: 1623440157324698, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
@@ -1125,8 +1235,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 879906383
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f9384cc9066f32b4e831895e91e5b240, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1146,7 +1256,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 512402057}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.151, y: -0.01, z: 0}
   m_LocalScale: {x: 1.259, y: 1.259, z: 1.259}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1206,6 +1316,16 @@ Prefab:
     - target: {fileID: 1054374731495956, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
@@ -1270,6 +1390,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -1333,6 +1463,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -1378,11 +1518,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4577027948301336, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
       propertyPath: m_RootOrder
-      value: 45
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1285712576265566, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
@@ -1437,6 +1587,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -1501,6 +1661,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -1564,6 +1734,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -1623,6 +1803,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
   m_IsPrefabAsset: 0
@@ -1673,6 +1863,16 @@ Prefab:
     - target: {fileID: 1285712576265566, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
@@ -1733,6 +1933,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
   m_IsPrefabAsset: 0
@@ -1787,6 +1997,16 @@ Prefab:
     - target: {fileID: 1285712576265566, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
@@ -1854,6 +2074,16 @@ Prefab:
     - target: {fileID: 1054374731495956, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
@@ -1945,6 +2175,11 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: playerNum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
@@ -1994,6 +2229,16 @@ Prefab:
     - target: {fileID: 1285712576265566, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
@@ -2062,6 +2307,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -2120,6 +2375,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -2466,6 +2731,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212674276003685206, guid: d156d5415e5c30a4abde7c363d8b621f,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d156d5415e5c30a4abde7c363d8b621f, type: 2}
   m_IsPrefabAsset: 0
@@ -2529,6 +2804,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -2591,6 +2876,16 @@ Prefab:
     - target: {fileID: 1623440157324698, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
@@ -2666,6 +2961,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -2729,6 +3034,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -2797,6 +3112,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
   m_IsPrefabAsset: 0
@@ -2855,6 +3180,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -2919,6 +3254,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -2964,11 +3309,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4799042725132058, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_RootOrder
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -3132,6 +3487,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -3195,6 +3560,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212459829358612840, guid: 2ba1052301e479d4c92cf6d24a070d56,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ba1052301e479d4c92cf6d24a070d56, type: 2}
   m_IsPrefabAsset: 0
@@ -3246,6 +3621,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371abc575ed824a42ace2de3f96be74d, type: 2}
   m_IsPrefabAsset: 0
@@ -3264,7 +3649,7 @@ Prefab:
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
       propertyPath: projectiles.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4359330821704850, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3307,7 +3692,7 @@ Prefab:
         type: 2}
       propertyPath: projectiles.Array.data[0]
       value: 
-      objectReference: {fileID: 114936095517231488, guid: ca8248188d42d494ab4a31a6bf5cafd6,
+      objectReference: {fileID: 114442568222436112, guid: 85a3a080a42faf44d80e29ff6983f62c,
         type: 2}
     - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
         type: 2}
@@ -3399,6 +3784,40 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.key0.b
       value: 0.44705883
       objectReference: {fileID: 0}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 114268287741858190, guid: c8dde5da2c505994db2f0a4a24709149,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 114984438175874890, guid: d3faff1294705a543b698251414cce15,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[4]
+      value: 
+      objectReference: {fileID: 114764389486700446, guid: 8652b4f6ff3b36546bd3d5ad14744364,
+        type: 2}
+    - target: {fileID: 114008019033261362, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: projectiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 114633689662005148, guid: fe8d4dbf97d501e4593613176066d930,
+        type: 2}
+    - target: {fileID: 114365848776223274, guid: 314cf8057f887564b86182ecf0184c50,
+        type: 2}
+      propertyPath: playerNum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314cf8057f887564b86182ecf0184c50, type: 2}
   m_IsPrefabAsset: 0
@@ -3449,6 +3868,16 @@ Prefab:
     - target: {fileID: 1181102758792338, guid: 371abc575ed824a42ace2de3f96be74d, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212121538832526066, guid: 371abc575ed824a42ace2de3f96be74d,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 371abc575ed824a42ace2de3f96be74d, type: 2}
@@ -3508,6 +3937,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -3577,6 +4016,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -3640,6 +4089,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -3702,6 +4161,16 @@ Prefab:
     - target: {fileID: 1623440157324698, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
@@ -3771,6 +4240,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -3887,7 +4366,7 @@ Prefab:
     - target: {fileID: 114986771843681632, guid: 0fcfa80a08fea604a87bce102893208b,
         type: 2}
       propertyPath: maxChange
-      value: 0.25
+      value: 0.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fcfa80a08fea604a87bce102893208b, type: 2}
@@ -3947,6 +4426,16 @@ Prefab:
       propertyPath: m_TagString
       value: Charging Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212223524615972776, guid: b14a23cca142b1f4ea67eb30aab946e7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b14a23cca142b1f4ea67eb30aab946e7, type: 2}
   m_IsPrefabAsset: 0
@@ -3964,11 +4453,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4799042725132058, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -30.76001
+      value: -30.574
       objectReference: {fileID: 0}
     - target: {fileID: 4799042725132058, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 12.7599945
+      value: 12.796
       objectReference: {fileID: 0}
     - target: {fileID: 4799042725132058, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4013,6 +4502,16 @@ Prefab:
     - target: {fileID: 1943056586753170, guid: 500f55d6953384649b3420a290e9123b, type: 2}
       propertyPath: m_TagString
       value: Charging Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212096599656719468, guid: 500f55d6953384649b3420a290e9123b,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 500f55d6953384649b3420a290e9123b, type: 2}
@@ -4095,7 +4594,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 225739657
-  m_SortingOrder: 0
+  m_SortingOrder: 47
   m_TargetDisplay: 0
 --- !u!224 &2104137941
 RectTransform:

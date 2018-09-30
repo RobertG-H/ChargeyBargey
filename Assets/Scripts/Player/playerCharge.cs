@@ -38,7 +38,7 @@ public class playerCharge : MonoBehaviour {
 			if (charge > 100) charge = 100;
 		}
 		else {
-			charge -=  DISCHARGERATE * Time.deltaTime;
+			//charge -=  DISCHARGERATE * Time.deltaTime;
 			if (charge < 0) charge = 0;
 		}
 		meter.SetLength(charge);
@@ -51,21 +51,22 @@ public class playerCharge : MonoBehaviour {
 			charging = true;
 			onGround = true;
         }
-        if (collision.gameObject.tag == "projectile")
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum)
-                {
-                    float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
-                    charge += calcDamage;
-                    Debug.Log(calcDamage);
-                    Destroy(collision.gameObject);
-                }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "projectile") {
+            Debug.Log(collision.gameObject.GetComponent<ProjectileController>().playerNum);
+            Debug.Log(playerNum);
+            if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum) {
+                float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
+                charge += calcDamage;
+                Debug.Log(calcDamage);
+                Destroy(collision.gameObject);
             }
         }
     }
-	void OnCollisionExit2D(Collision2D collision)
+
+    void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Charging Platform")
         {
