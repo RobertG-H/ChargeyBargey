@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip blastClip;
     public AudioClip PDClip;
 
-    public AudioSource audioSource;
+    public AudioSource[] audioSources;
 
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
         charge = 0.0f;
     }
 
@@ -390,22 +390,22 @@ public class PlayerController : MonoBehaviour
         //Play sound
         switch (p) {
             case 0:
-                playSound(tiddlerClip);
+                playShotSound(tiddlerClip);
                 break;
             case 1:
-                playSound(kiBlastClip);
+                playShotSound(kiBlastClip);
                 break;
             case 2:
-                playSound(shotgunClip);
+                playShotSound(shotgunClip);
                 break;
             case 3:
-                playSound(sniperClip);
+                playShotSound(sniperClip);
                 break;
             case 4:
-                playSound(blastClip);
+                playShotSound(blastClip);
                 break;
             case 5:
-                playSound(PDClip);
+                playShotSound(PDClip);
                 break;
         }
     }
@@ -421,13 +421,18 @@ public class PlayerController : MonoBehaviour
 
 
     public void playSound(AudioClip clipToPlay) {
-        audioSource.clip = clipToPlay;
-        audioSource.Play();
+        audioSources[0].clip = clipToPlay;
+        audioSources[0].Play();
+    }
+
+    public void playShotSound(AudioClip clipToPlay) {
+        audioSources[1].clip = clipToPlay;
+        audioSources[1].Play();
     }
 
     public void playTurnSound() {
-        audioSource.clip = turnClip;
-        audioSource.Play();
+        audioSources[0].clip = turnClip;
+        audioSources[0].Play();
     }
 
 }
