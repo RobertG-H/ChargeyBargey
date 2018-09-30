@@ -52,7 +52,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 7
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Horizontal3
     descriptiveName: 
@@ -164,7 +164,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 7
+    joyNum: 2
   - serializedVersion: 3
     m_Name: Vertical3
     descriptiveName: 
@@ -282,7 +282,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 7 button 0
+    positiveButton: joystick 2 button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -410,7 +410,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 7 button 1
+    positiveButton: joystick 2 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
