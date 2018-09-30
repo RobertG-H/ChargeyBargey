@@ -32,7 +32,7 @@ public class ball2 : MonoBehaviour {
 	public void Move(float speed, Vector2 velocity)
     {
 		body.mass = 2;
-		body.sharedMaterial.bounciness = 2;
+		body.sharedMaterial.bounciness = 1.5f;
 		Vector3 force = new Vector2(1,1) * velocity.x * 100;
         body.AddForce(force);
 		Debug.Log("velocity");
