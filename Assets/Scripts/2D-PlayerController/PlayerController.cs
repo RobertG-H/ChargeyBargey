@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     #region Charging
     private float CHARGERATE = 20f;
-    private float DISCHARGERATE = 14f;
+    private float DISCHARGERATE = 5f;
     private float charge;
     #endregion
 
@@ -153,9 +153,9 @@ public class PlayerController : MonoBehaviour
                 charge += addCharge;
             }
         }
-        else
+        else if (isGrounded)
         {
-            //charge -=  DISCHARGERATE * Time.deltaTime;
+            charge -=  DISCHARGERATE * Time.deltaTime;
             if (charge < 0) charge = 0;
         }
         meter.SetLength(charge);
