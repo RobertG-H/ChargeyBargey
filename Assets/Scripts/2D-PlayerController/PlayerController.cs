@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
+    private CapsuleCollider2D collider;
     [SerializeField]
     private GameObject slashHitBox;
     [SerializeField]
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public MeterController meter;
     public ProjectileController projectile;
+    public bool IsDead = false;
 
     #region Charging
     private float CHARGERATE = 20f;
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip blastClip;
     public AudioClip PDClip;
 
-    public AudioSource audioSource;
+    public AudioSource[] audioSources;
 
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
@@ -73,7 +75,8 @@ public class PlayerController : MonoBehaviour
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
+        collider = GetComponent<CapsuleCollider2D>();
         charge = 0.0f;
     }
 
@@ -424,22 +427,22 @@ public class PlayerController : MonoBehaviour
         switch (p)
         {
             case 0:
-                playSound(tiddlerClip);
+                playShotSound(tiddlerClip);
                 break;
             case 1:
-                playSound(kiBlastClip);
+                playShotSound(kiBlastClip);
                 break;
             case 2:
-                playSound(shotgunClip);
+                playShotSound(shotgunClip);
                 break;
             case 3:
-                playSound(sniperClip);
+                playShotSound(sniperClip);
                 break;
             case 4:
-                playSound(blastClip);
+                playShotSound(blastClip);
                 break;
             case 5:
-                playSound(PDClip);
+                playShotSound(PDClip);
                 break;
         }
         rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
@@ -457,13 +460,33 @@ public class PlayerController : MonoBehaviour
 
 
     public void playSound(AudioClip clipToPlay) {
-        audioSource.clip = clipToPlay;
-        audioSource.Play();
+        audioSources[0].clip = clipToPlay;
+        audioSources[0].Play();
+    }
+
+    public void playShotSound(AudioClip clipToPlay) {
+        audioSources[1].clip = clipToPlay;
+        audioSources[1].Play();
     }
 
     public void playTurnSound() {
-        audioSource.clip = turnClip;
-        audioSource.Play();
+        audioSources[0].clip = turnClip;
+        audioSources[0].Play();
+    }
+
+    public void playDead() {
+        IsDead = true;
+        playSound(deathClip);
+        StartCoroutine(destroyPlayerAfterDeath());
+    }
+
+    IEnumerator destroyPlayerAfterDeath() {
+        yield return new WaitForSeconds(0.7f);
+        GameObject.Destroy(collider);
+        animations.HidePlayer();
+        audioSources[0].volume = 0;
+        audioSources[1].volume = 0;
+        rigidBody.bodyType = RigidbodyType2D.Static;
     }
 
 }

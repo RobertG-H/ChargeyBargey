@@ -12,6 +12,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private PlayerController controller;
     private PlayerStateController stateController;
+    private Animator mainAnim;
     private Animator headAnim;
     private Animator bodyAnim;
     private SpriteRenderer headSpriteRend;
@@ -29,6 +30,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         controller = gameObject.GetComponent<PlayerController>();
         stateController = gameObject.GetComponent<PlayerStateController>();
+        mainAnim = GetComponent<Animator>();
         headAnim = Head.GetComponent<Animator>();
         bodyAnim = Body.GetComponent<Animator>();
         headSpriteRend = Head.GetComponent<SpriteRenderer>();
@@ -43,6 +45,7 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mainAnim.SetInteger("currentState", stateController.currentState);
         headAnim.SetInteger("currentState", stateController.currentState);
         headAnim.SetFloat("speedX", Math.Abs(controller.GetSpeedX() * 0.1f));
 
@@ -84,8 +87,15 @@ public class PlayerAnimations : MonoBehaviour
 
     }
 
+
     //public void ShootAnim() {
     //    headAnim.SetTrigger("shoot");
     //    bodyAnim.SetTrigger("shoot");
     //}
+
+    public void HidePlayer() {
+        playerParticles.SetActive(false);
+        mainAnim.SetTrigger("hide");
+    }
+
 }

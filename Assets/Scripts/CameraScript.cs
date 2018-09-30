@@ -21,6 +21,8 @@ public class CameraScript : MonoBehaviour {
     private float sizeFactor;
     [SerializeField]
     private float maxChange;
+    [SerializeField]
+    private float minimumHeight;
 
     private Camera pcam;
 
@@ -136,7 +138,7 @@ public class CameraScript : MonoBehaviour {
         }
 
         // Center the Camera
-        transform.position = new Vector3(xTotal, yTotal, -10);
+        transform.position = new Vector3(xTotal, yTotal  - minimumHeight, -10);
 
     }
 }
