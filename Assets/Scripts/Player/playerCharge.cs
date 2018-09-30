@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class playerCharge : MonoBehaviour {
 
-	public Rigidbody2D rigidbody;
-	public MeterController meter;
+    [SerializeField]
+    private int playerNum;
 
-	private float CHARGERATE = 20f;
+    public Rigidbody2D rigidbody;
+	public MeterController meter;
+    public ProjectileController projectile;
+    private PlayerStateController stateController;
+
+    private float CHARGERATE = 20f;
 	private float DISCHARGERATE = 14f;
 
 	public float charge;
@@ -19,10 +24,15 @@ public class playerCharge : MonoBehaviour {
 		charge = 0.0f;
 		onGround = false;
 		rigidbody = GetComponent<Rigidbody2D>();
+        stateController = GetComponent<PlayerStateController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (charge > 100)
+        {
+            //stateController.SetStateDead();
+        }
         if (isCharging()) {
 			charge += CHARGERATE * Time.deltaTime;
 			if (charge > 100) charge = 100;
@@ -40,6 +50,19 @@ public class playerCharge : MonoBehaviour {
         {
 			charging = true;
 			onGround = true;
+        }
+        if (collision.gameObject.tag == "projectile")
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum)
+                {
+                    float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
+                    charge += calcDamage;
+                    Debug.Log(calcDamage);
+                    Destroy(collision.gameObject);
+                }
+            }
         }
     }
 	void OnCollisionExit2D(Collision2D collision)

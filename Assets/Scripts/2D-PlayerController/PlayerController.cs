@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private GameObject slashHitBox;
+    [SerializeField]
+    private int playerNum;
     private PlayerAnimations animations;
     public ProjectileController[] projectiles;
     // [speed, duration]
@@ -206,6 +208,9 @@ public class PlayerController : MonoBehaviour
         );
         projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
         projectile.Shoot(getForward(), projectileProps[p, 0]);
+        projectile.tag = "projectile";
+        projectile.damage = pCharge.charge;
+        projectile.playerNum = playerNum;
         Destroy(projectile.gameObject, projectileProps[p, 1]);
 
         if (p == 2) {
@@ -216,6 +221,7 @@ public class PlayerController : MonoBehaviour
             );
             projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p,0]);
             projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            projectileUpper.tag = "projectile";
             Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
 
             ProjectileController projectileLower = Instantiate (
@@ -225,6 +231,7 @@ public class PlayerController : MonoBehaviour
             );
             projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
             projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            projectileLower.tag = "projectile";
             Destroy(projectileLower.gameObject, projectileProps[p, 1]);
         }
 

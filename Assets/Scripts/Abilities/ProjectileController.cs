@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour {
 	//private int SPEED = 20;
 	private Rigidbody2D rigidbody;
+    public float damage;
+    public float playerNum;
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +15,9 @@ public class ProjectileController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
-
+    
 	public void Shoot (Vector2 direction, float speed) {
 		GetComponent<Rigidbody2D>().velocity = speed * direction.normalized;
 	}
+
 }
