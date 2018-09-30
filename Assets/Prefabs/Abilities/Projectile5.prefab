@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 114633689662005148}
   - component: {fileID: 95300984162728330}
   - component: {fileID: 58235667807955382}
-  - component: {fileID: 70936905543209490}
   m_Layer: 0
   m_Name: Projectile5
   m_TagString: Untagged
@@ -56,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 34.698586
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -64,7 +63,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &58235667807955382
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -74,27 +73,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.8217902, y: 0.6974089}
+  m_Offset: {x: 2.3774493, y: 0.6974089}
   serializedVersion: 2
-  m_Radius: 7.1639442
---- !u!70 &70936905543209490
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738992204506062}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -7.5314097, y: 0.20575824}
-  m_Size: {x: 11.99885, y: 5.10211}
-  m_Direction: 1
+  m_Radius: 5.719603
 --- !u!95 &95300984162728330
 Animator:
   serializedVersion: 3
@@ -124,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4078657193901274c9203f8906d1601f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  playerNum: 0
 --- !u!212 &212211534547168350
 SpriteRenderer:
   m_ObjectHideFlags: 1

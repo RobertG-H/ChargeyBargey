@@ -104,7 +104,6 @@ public class CameraScript : MonoBehaviour {
         }
 
         // Stop the camera from changing too fast
-        Debug.Log(pcam.orthographicSize);
         if (camVar - pcam.orthographicSize > maxChange)
         {
             camVar = pcam.orthographicSize + maxChange;

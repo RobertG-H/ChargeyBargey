@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Charging Platform
+  - projectile
   layers:
   - Default
   - TransparentFX
@@ -39,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 879906383
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -53,6 +57,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 225739657
+    locked: 0
   - name: PlayerFace
     uniqueID: 937637241
     locked: 0

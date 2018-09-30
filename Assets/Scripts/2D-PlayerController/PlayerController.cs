@@ -52,10 +52,10 @@ public class PlayerController : MonoBehaviour
     private float rayCastDownDist = 2.0f;
     [SerializeField]
     private float rayCastSideDist = 0.5f;
-    private const float jumpForce = 350f;
+    private const float jumpForce = 500f;
     private const float fastFallForce = -50.0f;
-    private const float jumpForceHeld = 60f;
-    private const float fullHopJumpHeight = 1.2f;
+    private const float jumpForceHeld = 80f;
+    private const float fullHopJumpHeight = 1.8f;
     #endregion
 
     void Start()
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if ( !isGrounded ) {
-            ACCELERATIONX = 50f;
+            ACCELERATIONX = 100f;
         } else if ( isGrounded ){
             ACCELERATIONX = 100f;
         }
@@ -104,18 +104,19 @@ public class PlayerController : MonoBehaviour
         Vector3 leftRay = new Vector3(-1, 0, 0);
         Vector3 rightRay = new Vector3(1, 0, 0);
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(leftRay) * rayCastSideDist, Color.red);
-        Debug.DrawRay(transform.position, transform.TransformDirection(rightRay) * rayCastSideDist, Color.green);
+        Debug.DrawRay(transform.position - new Vector3(0, 1.8f, 0), transform.TransformDirection(leftRay) * rayCastSideDist, Color.red);
+        Debug.DrawRay(transform.position - new Vector3(0, 1.8f, 0), transform.TransformDirection(rightRay) * rayCastSideDist, Color.green);
         
-        Collider2D raycastColliderLeft = Physics2D.Raycast(transform.position, transform.TransformDirection(leftRay), rayCastSideDist, layerMask).collider;
-        Collider2D raycastColliderRight = Physics2D.Raycast(transform.position, transform.TransformDirection(rightRay), rayCastSideDist, layerMask).collider;
-        if (raycastColliderLeft != null)
-        {
+        Collider2D raycastColliderLeft1 = Physics2D.Raycast(transform.position, transform.TransformDirection(leftRay), rayCastSideDist, layerMask).collider;
+        Collider2D raycastColliderLeft2 = Physics2D.Raycast(transform.position - new Vector3(0,1.8f,0), transform.TransformDirection(leftRay), rayCastSideDist, layerMask).collider;
+        Collider2D raycastColliderRight1 = Physics2D.Raycast(transform.position, transform.TransformDirection(rightRay), rayCastSideDist, layerMask).collider;
+        Collider2D raycastColliderRight2 = Physics2D.Raycast(transform.position - new Vector3(0, 1.8f, 0), transform.TransformDirection(rightRay), rayCastSideDist, layerMask).collider;
+        if (raycastColliderLeft1 != null || raycastColliderLeft2 != null) {
             touchingLeftWall = true;
             touchingRightWall = false;
             return true;
         }
-        else if ( raycastColliderRight != null ){
+        else if ( raycastColliderRight1 != null || raycastColliderRight2 != null) {
             touchingRightWall = true;
             touchingLeftWall = false;
             return true;

@@ -19,5 +19,4 @@ public class ProjectileController : MonoBehaviour {
 	public void Shoot (Vector2 direction, float speed) {
 		GetComponent<Rigidbody2D>().velocity = speed * direction.normalized;
 	}
-
 }
