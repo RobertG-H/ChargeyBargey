@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     private int playerNum;
     private PlayerAnimations animations;
     public ProjectileController[] projectiles;
+
+    public AudioClip turnClip;
+    public AudioClip jumpClip;
+    public AudioClip deathClip;
+
+    public AudioSource audioSource;
+
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
         {20, 0.5f},
@@ -33,13 +40,15 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 fullHopPoint;
     #region Constants
-    private const float MAXSPEEDX = 10f;
+    private const float MAXSPEEDX = 16f;
     private float ACCELERATIONX = 50f;
     [SerializeField]
     private float rayCastDownDist = 2.0f;
-    private const float jumpForce = 500f;
+    [SerializeField]
+    private float rayCastSideDist = 0.5f;
+    private const float jumpForce = 350f;
     private const float fastFallForce = -50.0f;
-    private const float jumpForceHeld = 500.0f;
+    private const float jumpForceHeld = 60f;
     private const float fullHopJumpHeight = 1.2f;
     #endregion
 
@@ -49,14 +58,15 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         pCharge = GetComponent<playerCharge>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if ( !isGrounded ) {
-            ACCELERATIONX = 20f;
-        } else if ( isGrounded ){
             ACCELERATIONX = 50f;
+        } else if ( isGrounded ){
+            ACCELERATIONX = 100f;
         }
         int layerMask = 1 << 2;
         layerMask = ~layerMask;
@@ -84,26 +94,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void CheckWalled( int layerMask ) {
+    public bool CheckWalled( int layerMask ) {
         Vector3 leftRay = new Vector3(-1, 0, 0);
         Vector3 rightRay = new Vector3(1, 0, 0);
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(leftRay), Color.red);
-        Debug.DrawRay(transform.position, transform.TransformDirection(rightRay) * rayCastDownDist, Color.green);
+        Debug.DrawRay(transform.position, transform.TransformDirection(leftRay) * rayCastSideDist, Color.red);
+        Debug.DrawRay(transform.position, transform.TransformDirection(rightRay) * rayCastSideDist, Color.green);
         
-        Collider2D raycastColliderLeft = Physics2D.Raycast(transform.position, transform.TransformDirection(leftRay) * rayCastDownDist, rayCastDownDist, layerMask).collider;
-        Collider2D raycastColliderRight = Physics2D.Raycast(transform.position, transform.TransformDirection(rightRay) * rayCastDownDist, rayCastDownDist, layerMask).collider;
+        Collider2D raycastColliderLeft = Physics2D.Raycast(transform.position, transform.TransformDirection(leftRay), rayCastSideDist, layerMask).collider;
+        Collider2D raycastColliderRight = Physics2D.Raycast(transform.position, transform.TransformDirection(rightRay), rayCastSideDist, layerMask).collider;
         if (raycastColliderLeft != null)
         {
             touchingLeftWall = true;
             touchingRightWall = false;
+            return true;
         }
         else if ( raycastColliderRight != null ){
             touchingRightWall = true;
             touchingLeftWall = false;
+            return true;
         } else {
             touchingLeftWall = false;
             touchingRightWall = false;
+            return false;
         }
     }
 
@@ -141,10 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             //right wall jump
             wallJump("right");
-        }else if ( isJumping )
-        {
-            ContinueJump();
-        } else if ( isGrounded )
+        }else if ( isGrounded )
         {
             Jump();
         }
@@ -154,11 +164,18 @@ public class PlayerController : MonoBehaviour
         fullHopPoint = new Vector3(transform.position.x, transform.position.y + fullHopJumpHeight, transform.position.z);
         rigidBody.AddForce(new Vector2(0, jumpForce));
         isJumping = true;
+        playSound(jumpClip);
     }
     public void ContinueJump()
     {
-        rigidBody.AddForce(new Vector2(0, jumpForceHeld));
-        isJumping = false;
+        if (isJumping) {
+            if (transform.position.y < fullHopPoint.y && rigidBody.velocity.y > 0) {
+                rigidBody.AddForce(new Vector2(0, jumpForceHeld));
+            }
+            else {
+                isJumping = false;
+            }
+        }
     }
     public void wallJump( string dir )
     {
@@ -245,6 +262,17 @@ public class PlayerController : MonoBehaviour
         slashHitBox.transform.localPosition = new Vector2(-slashHitBox.transform.localPosition.x, slashHitBox.transform.localPosition.y);
         slashHitBox.transform.localScale = new Vector2(-slashHitBox.transform.localScale.x, slashHitBox.transform.localScale.y);
         */
+    }
+
+
+    public void playSound(AudioClip clipToPlay) {
+        audioSource.clip = clipToPlay;
+        audioSource.Play();
+    }
+
+    public void playTurnSound() {
+        audioSource.clip = turnClip;
+        audioSource.Play();
     }
 
 }
