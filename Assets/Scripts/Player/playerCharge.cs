@@ -13,7 +13,7 @@ public class playerCharge : MonoBehaviour {
     private PlayerStateController stateController;
 
     private float CHARGERATE = 20f;
-	private float DISCHARGERATE = 14f;
+	private float DISCHARGERATE = 5f;
 
 	public float charge;
 	public bool onGround;
@@ -34,11 +34,11 @@ public class playerCharge : MonoBehaviour {
             //stateController.SetStateDead();
         }
         if (isCharging()) {
-			charge += CHARGERATE * Time.deltaTime;
+			charge += 0.75f * (1 - charge/100f) * CHARGERATE * Time.deltaTime + 0.5f * CHARGERATE * Time.deltaTime;
 			if (charge > 100) charge = 100;
 		}
 		else {
-			//charge -=  DISCHARGERATE * Time.deltaTime;
+			charge -=  DISCHARGERATE * Time.deltaTime;
 			if (charge < 0) charge = 0;
 		}
 		meter.SetLength(charge);
@@ -61,7 +61,8 @@ public class playerCharge : MonoBehaviour {
                 float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
                 charge += calcDamage;
                 Debug.Log(calcDamage);
-                Destroy(collision.gameObject);
+                if (collision.gameObject.GetComponent<ProjectileController>().damage < 100)
+                    Destroy(collision.gameObject);
             }
         } else if ( collision.gameObject.tag == "charge" ) {
             Debug.Log("hit by ball");

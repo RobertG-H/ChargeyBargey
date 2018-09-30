@@ -7,12 +7,24 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private SpriteRenderer spriteRenderer;
+    private CapsuleCollider2D collider;
     [SerializeField]
     private GameObject slashHitBox;
     [SerializeField]
     private int playerNum;
     private PlayerAnimations animations;
     public ProjectileController[] projectiles;
+
+    public MeterController meter;
+    public ProjectileController projectile;
+    public bool IsDead = false;
+
+    #region Charging
+    private float CHARGERATE = 20f;
+    private float DISCHARGERATE = 5f;
+    private float charge;
+    #endregion
+
 
     public AudioClip turnClip;
     public AudioClip jumpClip;
@@ -24,24 +36,24 @@ public class PlayerController : MonoBehaviour
     public AudioClip blastClip;
     public AudioClip PDClip;
 
-    public AudioSource audioSource;
+    public AudioSource[] audioSources;
 
     // [speed, duration]
     private float[,] projectileProps = new float[,] {
-        {20, 0.5f},
-        {20, 3},
-        {10, 1},
-        {20, 3},
-        {30, 3},
-        {20, 3},
+        {30, 0.35f},
+        {20, 1},
+        {12, 3},
+        {50, 10},
+        {25, 10},
+        {8, 20},
     };
-    private playerCharge pCharge;
-
     #region Conditions
     private bool isGrounded;
     private bool isJumping;
     private bool touchingLeftWall;
     private bool touchingRightWall;
+    private bool charging;
+    private bool shooting;
     #endregion
 
     private Vector3 fullHopPoint;
@@ -63,21 +75,28 @@ public class PlayerController : MonoBehaviour
         animations = GetComponent<PlayerAnimations>();
         rigidBody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        pCharge = GetComponent<playerCharge>();
-        audioSource = GetComponent<AudioSource>();
+        audioSources = GetComponents<AudioSource>();
+        collider = GetComponent<CapsuleCollider2D>();
+        charge = 0.0f;
     }
 
     void Update()
     {
-        if ( !isGrounded ) {
+        if (shooting)
+            shooting = false;
+        if (!isGrounded)
+        {
             ACCELERATIONX = 100f;
-        } else if ( isGrounded ){
+        }
+        else if (isGrounded)
+        {
             ACCELERATIONX = 100f;
         }
         int layerMask = 1 << 2;
         layerMask = ~layerMask;
-        CheckGrounded( layerMask );
-        CheckWalled( layerMask );
+        CheckGrounded(layerMask);
+        CheckWalled(layerMask);
+        UpdateCharge();
     }
 
     private void CheckGrounded( int layerMask )
@@ -127,6 +146,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void UpdateCharge()
+    {
+        if (IsCharging())
+        {
+            float addCharge = CHARGERATE * Time.deltaTime;
+            if (charge <= 100 && charge + addCharge > 100)
+            {
+                charge = 100;
+            }
+            else
+            {
+                charge += addCharge;
+            }
+        }
+        else if (isGrounded)
+        {
+            charge -=  DISCHARGERATE * Time.deltaTime;
+            if (charge < 0) charge = 0;
+        }
+        meter.SetLength(charge);
+    }
+
     private Vector2 getForward() {
         return (spriteRenderer.flipX ? -1 : 1) * new Vector2(1,0);
     }
@@ -135,7 +176,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Math.Abs(GetSpeedX()) > MAXSPEEDX)
         {
-            if( isGrounded )
+            //if( isGrounded )
                 rigidBody.velocity = new Vector2(MAXSPEEDX * Math.Sign(rigidBody.velocity.x), rigidBody.velocity.y);
         }
         else
@@ -185,13 +226,17 @@ public class PlayerController : MonoBehaviour
     }
     public void wallJump( string dir )
     {
-        isJumping = true;
+        //isJumping = true;
         touchingLeftWall = false;
         touchingRightWall = false;
-        if ( dir == "right" ) {
-            rigidBody.AddForce(new Vector2(-600.0f, 650.0f));
-        } else if ( dir == "left" ) {
-            rigidBody.AddForce(new Vector2(600.0f, 650.0f));
+        Jump();
+        if (dir == "right")
+        {
+            rigidBody.AddForce(new Vector2(-1200.0f, 0));
+        }
+        else if (dir == "left")
+        {
+            rigidBody.AddForce(new Vector2(1200.0f, 0));
         }
     }
     public void FastFall()
@@ -201,15 +246,15 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(new Vector2(0, fastFallForce));
         }
     }
-    public void SlashStart()
-    {
-        slashHitBox.SetActive(true);
-        //animations.SlashAnim();
-    }
-    public void SlashEnd()
-    {
-        slashHitBox.SetActive(false);
-    }
+    //public void SlashStart()
+    //{
+    //    slashHitBox.SetActive(true);
+    //    //animations.SlashAnim();
+    //}
+    //public void SlashEnd()
+    //{
+    //    slashHitBox.SetActive(false);
+    //}
     public bool IsGrounded()
     {
         return isGrounded;
@@ -218,92 +263,229 @@ public class PlayerController : MonoBehaviour
     {
         return rigidBody.velocity.x;
     }
+    public float GetCharge()
+    {
+        return charge;
+    }
+    public int GetPlayerNum()
+    {
+        return playerNum;
+    }
+    public bool IsShooting()
+    {
+        return shooting;
+    }
+
+
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Charging Platform")
+    //    {
+    //        charging = true;
+    //    }
+    //}
+
+    //void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Charging Platform")
+    //    {
+    //        charging = false;
+    //    }
+    //}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "projectile")
+        {
+            //Debug.Log(collision.gameObject.GetComponent<ProjectileController>().playerNum);
+            //Debug.Log(playerNum);
+            if (collision.gameObject.GetComponent<ProjectileController>().playerNum != playerNum)
+            {
+                float calcDamage = collision.gameObject.GetComponent<ProjectileController>().damage;
+                
+                charge += calcDamage;
+                //Debug.Log(calcDamage);
+                //Debug.Log(charge);
+                if (calcDamage < 80)
+                    Destroy(collision.gameObject);
+            }
+        }
+    }
+
+    bool IsCharging()
+    {
+        return isGrounded && Mathf.Abs(rigidBody.velocity.x) > 0.25f;
+        //return isGrounded && charging && Mathf.Abs(rigidbody.velocity.x) > 0.25f;
+    }
 
     public void Shoot(){
-        if (pCharge.charge < 5) return;     
-        int p = (int) pCharge.charge / 20;
-        float xdirection = getForward().x;
-        
+        if (charge < 5) return;
 
-        ProjectileController projectile = Instantiate (
+        shooting = true;
+
+
+        float currentCharge = charge;
+        shooting = true;
+        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionY;
+        rigidBody.constraints |= RigidbodyConstraints2D.FreezePositionX;
+        StartCoroutine(WaitFrames(currentCharge));
+
+    }
+
+    IEnumerator WaitFrames(float currentCharge)
+    {
+        yield return new WaitForSeconds(0.1f*charge/20);
+
+        int p = (int)currentCharge / 20;
+        float xdirection = getForward().x;
+        float power = currentCharge;
+
+        rigidBody.velocity = new Vector2(0, 0);
+
+        if (p == 0)
+            power = 2;
+        else if (p == 2)
+            power = 0.6f * currentCharge;
+        else if (p == 5)
+            power = 101;
+
+        ProjectileController projectile = Instantiate(
             projectiles[p],
-            transform.position + new Vector3(xdirection,0,-3),
+            transform.position + new Vector3(xdirection, 0, -3),
             transform.rotation
         );
-        projectile.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-        projectile.Shoot(getForward(), projectileProps[p, 0]);
-        projectile.tag = "projectile";
-        projectile.damage = pCharge.charge;
-        projectile.playerNum = playerNum;
-        Destroy(projectile.gameObject, projectileProps[p, 1]);
+        projectile.Shoot(
+            getForward(),
+            projectileProps[p, 0],
+            projectileProps[p, 1],
+            power,
+            playerNum,
+            xdirection
+        );
 
-        if (p == 2) {
-            ProjectileController projectileUpper = Instantiate (
+        if (p == 2)
+        {
+            ProjectileController projectileUpper = Instantiate(
                 projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
+                transform.position + new Vector3(xdirection, 0, -3),
                 Quaternion.Euler(0, 0, 20 * xdirection)
             );
-            projectileUpper.Shoot(new Vector2(xdirection, 0.446f), projectileProps[p,0]);
-            projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileUpper.tag = "projectile";
-            Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
-
-            ProjectileController projectileLower = Instantiate (
+            projectileUpper.Shoot(
+                new Vector2(xdirection, 0.446f),
+                projectileProps[p, 0],
+                projectileProps[p, 1],
+                power,
+                playerNum,
+                xdirection
+            );
+            ProjectileController projectileLower = Instantiate(
                 projectiles[p],
-                transform.position + new Vector3(xdirection,0,-3),
+                transform.position + new Vector3(xdirection, 0, -3),
                 Quaternion.Euler(0, 0, -20 * xdirection)
             );
-            projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
-            projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
-            projectileLower.tag = "projectile";
-            Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+            projectileLower.Shoot(
+                new Vector2(xdirection, -0.446f),
+                projectileProps[p, 0],
+                projectileProps[p, 1],
+                power,
+                playerNum,
+                xdirection
+            );
         }
+        /*
+                if (p == 2) {
+                    ProjectileController projectileUpper = Instantiate (
+                if(p <= projectiles.Length)
+                {
+                    ProjectileController projectile = Instantiate(
+                        projectiles[p],
+                        transform.position + new Vector3(xdirection, 0, -3),
+                        transform.rotation
+                    );
+                    projectileUpper.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                    projectileUpper.tag = "projectile";
+                    Destroy(projectileUpper.gameObject, projectileProps[p, 1]);
 
-        pCharge.charge = 0;
+                    ProjectileController projectileLower = Instantiate (
+                        projectiles[p],
+                        transform.position + new Vector3(xdirection,0,-3),
+                        Quaternion.Euler(0, 0, -20 * xdirection)
+                    );
+                    projectileLower.Shoot(new Vector2(xdirection, -0.446f), projectileProps[p,0]);
+                    projectileLower.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+                    projectileLower.tag = "projectile";
+                    Destroy(projectileLower.gameObject, projectileProps[p, 1]);
+                }
+                */
+        if (p == 0)
+            charge -= 2;
+        else
+            charge = 0;
 
         //Play sound
-        switch (p) {
+        switch (p)
+        {
             case 0:
-                playSound(tiddlerClip);
+                playShotSound(tiddlerClip);
                 break;
             case 1:
-                playSound(kiBlastClip);
+                playShotSound(kiBlastClip);
                 break;
             case 2:
-                playSound(shotgunClip);
+                playShotSound(shotgunClip);
                 break;
             case 3:
-                playSound(sniperClip);
+                playShotSound(sniperClip);
                 break;
             case 4:
-                playSound(blastClip);
+                playShotSound(blastClip);
                 break;
             case 5:
-                playSound(PDClip);
+                playShotSound(PDClip);
                 break;
         }
-        // Animation
-        animations.ShootAnim();
+        rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        rigidBody.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
     }
 
-    public void FlipSlashHitBox()
-    {
-        // Uncomment for slash hitbox
-        /*
-        slashHitBox.transform.localPosition = new Vector2(-slashHitBox.transform.localPosition.x, slashHitBox.transform.localPosition.y);
-        slashHitBox.transform.localScale = new Vector2(-slashHitBox.transform.localScale.x, slashHitBox.transform.localScale.y);
-        */
-    }
+    //public void FlipSlashHitBox()
+    //{
+    //    // Uncomment for slash hitbox
+    //    /*
+    //    slashHitBox.transform.localPosition = new Vector2(-slashHitBox.transform.localPosition.x, slashHitBox.transform.localPosition.y);
+    //    slashHitBox.transform.localScale = new Vector2(-slashHitBox.transform.localScale.x, slashHitBox.transform.localScale.y);
+    //    */
+    //}
 
 
     public void playSound(AudioClip clipToPlay) {
-        audioSource.clip = clipToPlay;
-        audioSource.Play();
+        audioSources[0].clip = clipToPlay;
+        audioSources[0].Play();
+    }
+
+    public void playShotSound(AudioClip clipToPlay) {
+        audioSources[1].clip = clipToPlay;
+        audioSources[1].Play();
     }
 
     public void playTurnSound() {
-        audioSource.clip = turnClip;
-        audioSource.Play();
+        audioSources[0].clip = turnClip;
+        audioSources[0].Play();
+    }
+
+    public void playDead() {
+        IsDead = true;
+        playSound(deathClip);
+        StartCoroutine(destroyPlayerAfterDeath());
+    }
+
+    IEnumerator destroyPlayerAfterDeath() {
+        yield return new WaitForSeconds(0.7f);
+        GameObject.Destroy(collider);
+        animations.HidePlayer();
+        audioSources[0].volume = 0;
+        audioSources[1].volume = 0;
+        rigidBody.bodyType = RigidbodyType2D.Static;
     }
 
 }

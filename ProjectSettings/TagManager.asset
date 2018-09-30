@@ -55,9 +55,12 @@ TagManager:
   - name: Terrain
     uniqueID: 39363761
     locked: 0
-  - name: UI
-    uniqueID: 225739657
-    locked: 0
   - name: PlayerFace
     uniqueID: 937637241
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3869542509
+    locked: 0
+  - name: UI
+    uniqueID: 225739657
     locked: 0

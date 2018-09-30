@@ -7,10 +7,9 @@ public class PlayerStateController : MonoBehaviour {
 
     public delegate void DeathEvent(int playerNum);
     public event DeathEvent OnPlayerDeath;
-    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD, WALLSLIDE};
+    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD, WALLSLIDE, SHOOTING};
     public int currentState;
     [SerializeField]
-    private int playerNum;
 
     private Rigidbody2D rigidBody;
     private PlayerController controller;
@@ -22,33 +21,42 @@ public class PlayerStateController : MonoBehaviour {
     }
     void Update()
     {
-        if (CheckIdle()) {
-            SetStateIdle();
+        if(currentState != (int)state.DEAD)
+        {
+            if (CheckCharge())
+            {
+                SetStateDead();
+            }
+            else if (CheckShooting())
+            {
+                SetStateShooting();
+            }
+            else if (CheckIdle())
+            {
+                SetStateIdle();
+            }
+            else if (CheckWall())
+            {
+                SetStateWall();
+            }
+            else if (CheckWalking())
+            {
+                SetStateWalking();
+            }
+            else if (CheckJumping())
+            {
+                SetStateJumping();
+            }
+            else if (CheckFalling())
+            {
+                SetStateFalling();
+            }
         }
-        // Need to define this later	
-        //else if (CheckDeath())	
-        //{	
-        //    SetStateDead();	
-        //}
-        else if (CheckWall()) {
-            SetStateWall();
-        }
-        else if (CheckWalking()) {
-            SetStateWalking();
-        }
-        else if (CheckJumping()) {
-            SetStateJumping();
-        }
-        else if (CheckFalling()) {
-            SetStateFalling();
-        }
-
-
     }
 
     private bool CheckIdle()
     {
-        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal" + playerNum.ToString()) == 0)
+        if (controller.IsGrounded() && Input.GetAxisRaw("Horizontal" + controller.GetPlayerNum().ToString()) == 0)
             return true;
         return false;
     }
@@ -64,7 +72,7 @@ public class PlayerStateController : MonoBehaviour {
 
     private bool CheckWalking()
     {
-        if (controller.IsGrounded() && Math.Abs(Input.GetAxisRaw("Horizontal" + playerNum.ToString())) > 0)
+        if (controller.IsGrounded() && Math.Abs(Input.GetAxisRaw("Horizontal" + controller.GetPlayerNum().ToString())) > 0)
             return true;
         return false;
     }
@@ -81,6 +89,21 @@ public class PlayerStateController : MonoBehaviour {
         if (!controller.IsGrounded() && rigidBody.velocity.y < 0)
             return true;
         return false;
+    }
+
+    private bool CheckCharge()
+    {
+        if (controller.GetCharge() > 100)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool CheckShooting()
+    {
+        return controller.IsShooting();
     }
 
     public void SetStateIdle()
@@ -108,9 +131,23 @@ public class PlayerStateController : MonoBehaviour {
         currentState = (int)state.FALLING;
     }
 
-    public void SetStateDead() {
-        currentState = (int)state.DEAD;
-        OnPlayerDeath(playerNum);
+    public void SetStateDead()
+    {
+        if(OnPlayerDeath != null)
+        {
+            currentState = (int)state.DEAD;
+            OnPlayerDeath(controller.GetPlayerNum());
+            controller.playDead();
+        }
+        else
+        {
+            Debug.Log("Event was null");
+        }
+    }
+
+    public void SetStateShooting()
+    {
+        currentState = (int)state.SHOOTING;
     }
 
 }

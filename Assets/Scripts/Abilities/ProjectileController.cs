@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-	//private int SPEED = 20;
 	private Rigidbody2D rigidbody;
     public float damage;
     public float playerNum;
@@ -16,7 +15,12 @@ public class ProjectileController : MonoBehaviour {
 	void Update () {
 	}
     
-	public void Shoot (Vector2 direction, float speed) {
+	public void Shoot (Vector2 direction, float speed, float duration, float charge, int player, float xdirection) {
+		GetComponent<SpriteRenderer>().flipX = xdirection < 0;
 		GetComponent<Rigidbody2D>().velocity = speed * direction.normalized;
+		tag = "projectile";
+        damage = charge;
+        playerNum = player;
+		Destroy(gameObject, duration);
 	}
 }
