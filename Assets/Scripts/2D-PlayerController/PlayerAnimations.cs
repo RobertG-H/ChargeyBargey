@@ -7,6 +7,7 @@ public class PlayerAnimations : MonoBehaviour
 {
     public GameObject Head;
     public GameObject Body;
+    public GameObject Face;
     public GameObject playerParticles;
 
     private PlayerController controller;
@@ -15,6 +16,7 @@ public class PlayerAnimations : MonoBehaviour
     private Animator bodyAnim;
     private SpriteRenderer headSpriteRend;
     private SpriteRenderer bodySpriteRend;
+    private SpriteRenderer faceSpriteRend;
 
     private Vector3 playerParticlesRotation;
     private Vector3 particleTargetDir = new Vector3();
@@ -28,6 +30,7 @@ public class PlayerAnimations : MonoBehaviour
         bodyAnim = Body.GetComponent<Animator>();
         headSpriteRend = Head.GetComponent<SpriteRenderer>();
         bodySpriteRend = Body.GetComponent<SpriteRenderer>();
+        faceSpriteRend = Face.GetComponent<SpriteRenderer>();
         playerParticlesRotation = new Vector3(270, 270, 0);
     }
 
@@ -42,7 +45,7 @@ public class PlayerAnimations : MonoBehaviour
         {
             headSpriteRend.flipX = !headSpriteRend.flipX;
             bodySpriteRend.flipX = !bodySpriteRend.flipX;
-            Debug.Log("Turning");
+            faceSpriteRend.flipX = !faceSpriteRend.flipX;
             controller.playTurnSound();
         }
         updateParticles();
@@ -68,5 +71,10 @@ public class PlayerAnimations : MonoBehaviour
         Vector3 newDir = Vector3.RotateTowards(playerParticlesRotation, particleTargetDir, step, 2.0f);
         playerParticlesRotation = newDir;
         playerParticles.transform.rotation = Quaternion.LookRotation(newDir);
+    }
+
+    public void ShootAnim() {
+        headAnim.SetTrigger("shoot");
+        bodyAnim.SetTrigger("shoot");
     }
 }
