@@ -52,7 +52,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 2
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Horizontal3
     descriptiveName: 
@@ -84,7 +84,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 4
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Horizontal2
     descriptiveName: 
@@ -164,7 +164,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 2
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Vertical3
     descriptiveName: 
@@ -196,7 +196,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 4
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Fire1
     descriptiveName: 
@@ -282,7 +282,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 0
+    positiveButton: joystick 7 button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -292,7 +292,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 1
-    joyNum: 2
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Jump3
     descriptiveName: 
@@ -314,7 +314,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 4 button 0
+    positiveButton: joystick 5 button 0
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -324,7 +324,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 1
-    joyNum: 4
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Mouse X
     descriptiveName: 
@@ -410,7 +410,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 2 button 1
+    positiveButton: joystick 7 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -420,7 +420,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 7
   - serializedVersion: 3
     m_Name: Fire3
     descriptiveName: 
@@ -442,7 +442,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: joystick 4 button 1
+    positiveButton: joystick 5 button 1
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -452,7 +452,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 3
+    joyNum: 5
   - serializedVersion: 3
     m_Name: Jump
     descriptiveName: 
