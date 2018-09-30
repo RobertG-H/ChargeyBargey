@@ -7,7 +7,7 @@ public class PlayerStateController : MonoBehaviour {
 
     public delegate void DeathEvent(int playerNum);
     public event DeathEvent OnPlayerDeath;
-    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD, WALLSLIDE};
+    public enum state {IDLE, WALKING, JUMPING, FALLING, DEAD, WALLSLIDE, SHOOTING};
     public int currentState;
     [SerializeField]
 
@@ -26,6 +26,10 @@ public class PlayerStateController : MonoBehaviour {
             if (CheckCharge())
             {
                 SetStateDead();
+            }
+            else if (CheckShooting())
+            {
+                SetStateShooting();
             }
             else if (CheckIdle())
             {
@@ -97,6 +101,11 @@ public class PlayerStateController : MonoBehaviour {
         return false;
     }
 
+    private bool CheckShooting()
+    {
+        return controller.IsShooting();
+    }
+
     public void SetStateIdle()
     {
         currentState = (int)state.IDLE;
@@ -134,6 +143,11 @@ public class PlayerStateController : MonoBehaviour {
         {
             Debug.Log("Event was null");
         }
+    }
+
+    public void SetStateShooting()
+    {
+        currentState = (int)state.SHOOTING;
     }
 
 }

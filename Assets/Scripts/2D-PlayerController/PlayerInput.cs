@@ -45,6 +45,7 @@ public class PlayerInput : MonoBehaviour
                 controller.Shoot();
             }
         }
+
     }
 
 }
